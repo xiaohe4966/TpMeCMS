@@ -1,9 +1,8 @@
-*   _____      __  __         ____ __  __ ____  
-*  |_   __ __ |  \/  | ___   / ___|  \/  / ___|     | AUTHOR: Xiaohe
-*    | || '_ \| |\/| |/ _ \ | |   | |\/| \___ \     | EMAIL: 496631085@qq.com
-*    | || |_) | |  | |  __/ | |___| |  | |___) |    | WECHAT: he4966
-*    |_|| .__/|_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2021/06/25
-*       |_|                                         | TpMeCMS
+*   | AUTHOR: Xiaohe
+*   | EMAIL: 496631085@qq.com
+*   | WECHAT: he4966
+*   | DATETIME: 2021/06/25
+*   | TpMeCMS
 
 TpMeCMS是一款基于FastAdmin框架开发的，FastAdmin基于ThinkPHP5+Bootstrap开发的框架,核心代码简洁、明了，适用于微信小程序/公众号，PC网站，手机网站，App（Api接口）等集于一体的Tp框架，后台直接生成数据库的增删改查，方便二次开开发，了解thinkphp5即可上手
 
