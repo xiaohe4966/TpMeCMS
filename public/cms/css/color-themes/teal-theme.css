@@ -1,0 +1,123 @@
+/* Theme Color */
+
+a,
+.theme_color,
+.list-style-one li:before,
+.main-footer .list li a:hover,
+.featured-block .inner-box .icon-box,
+.news-block .inner-box h3 a:hover,
+.social-icon-one li a:hover,
+.page-title .page-breadcrumb li a,
+.doctor-block .inner-box .lower-box h3 a:hover,
+.featured-block-two .inner .icon-box,
+.news-block-two .inner-box .lower-content h3 a:hover,
+.services-block .inner-box .lower-content h3 a:hover,
+.main-header .header-top .top-left .links li a:hover,
+.main-menu .navigation > li > ul > li:hover > a,
+.testimonial-block .inner-box .content .title,
+.brochure-box .inner .icon,
+.cat-list li a:hover,
+.error-section h1,
+.sidebar .popular-posts .post a:hover,
+.styled-pagination li a,
+.time-counter .time-countdown .counter-column .count,
+.contact-info-list li span,
+.time-counter .time-countdown .counter-column,
+.news-block-three .inner-box .lower-content .upper-box .posted-date,
+.news-block-three .inner-box .lower-content .lower-box h3 a:hover,
+.featured-block-three .inner-box .icon-box,
+.services-block-two .inner-box .lower-content h3 a:hover,
+.main-menu .navigation > li > ul > li > ul > li > a:hover,
+.main-menu .navigation > li:hover > a, .main-menu .navigation > li.current > a,
+.main-header .sticky-header .main-menu .navigation > li:hover > a,
+.main-header .sticky-header .main-menu .navigation > li.current > a,
+.main-header .sticky-header .main-menu .navigation > li.current-menu-item > a,
+.services-section .owl-prev:hover, .services-section .owl-next:hover{
+	color:#39CCCC;
+}
+
+/*Background Color*/
+
+.btn-style-one,
+.scroll-to-top:hover,
+.sec-title h2:after,
+.fact-counter-section,
+.page-title h1:after,
+.sidebar-title.style-two h2:after,
+.main-footer .footer-widget h2:after,
+.about-me-section .content-column .inner-column .title:after,
+.list-style-two li .icon,
+.main-slider .tparrows.metis:hover,
+.patient-section .offer-column .inner-column h2:after,
+.experiance-section .offer-column .inner-column h2:after,
+.blog-cat li.active a, .blog-cat li a:hover,
+.testimonial-section .upper-box .title-box:after,
+.appointment-section .content-column .inner-column h2:after,
+.styled-pagination li a:hover, .styled-pagination li a.active,
+.comming-soon .emailed-form .form-group input[type="submit"],
+.comming-soon .emailed-form button,
+.sidebar .popular-tags a:hover{
+	background-color:#39CCCC;
+}
+
+
+/*Border Color*/
+
+.btn-style-one,
+.social-icon-one li a:hover,
+.services-section .owl-prev:hover,
+.services-section .owl-next:hover,
+.default-form .form-group input[type="text"]:focus,
+.default-form .form-group input[type="tel"]:focus,
+.default-form .form-group input[type="email"]:focus,
+.default-form .form-group textarea:focus,
+.faq-search-box .form-group input:focus,
+.faq-form-section .form-group input[type="text"]:focus,
+.faq-form-section .form-group input[type="email"]:focus,
+.faq-form-section .form-group textarea:focus,
+.styled-pagination li a,
+.main-slider .tparrows.metis:hover,
+.styled-pagination li a:hover, .styled-pagination li a.active,
+.comment-form .form-group input[type="text"]:focus,
+.comment-form .form-group input[type="email"]:focus,
+.comment-form .form-group textarea:focus,
+.time-counter .time-countdown .counter-column,
+.contact-form .form-group input:focus, .contact-form .form-group textarea:focus,
+.sidebar .popular-tags a:hover{
+	border-color:#39CCCC;
+}
+
+/*RGBA Color Light*/
+
+.doctor-block .inner-box .image .overlay-box,
+.services-block-two .inner-box .image .overlay,
+.services-block .inner-box .image .overlay{
+	background-color:rgba(57,204,204,0.85);
+}
+
+@media only screen and (max-width: 767px){
+	
+	.main-menu .navbar-header .navbar-toggle{
+		border-color:#39CCCC;
+	}
+	
+	.main-menu .navbar-header .navbar-toggle,
+	.main-menu .navbar-collapse > .navigation,
+	.main-menu .navbar-collapse > .navigation > li > ul,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul,
+	.main-menu .navbar-collapse > .navigation > li > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul > li > a,
+	.main-menu .navbar-collapse > .navigation > li > a:hover,
+	.main-menu .navbar-collapse > .navigation > li > a:active,
+	.main-menu .navbar-collapse > .navigation > li > a:focus,
+	.main-menu .navbar-collapse > .navigation > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li.current > a,
+	.main-menu .navbar-collapse > .navigation > li.current-menu-item > a,
+	.header-style-two.inner-header .main-menu .navigation > li > a{
+		background-color:#39CCCC;
+	}
+	
+}

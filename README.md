@@ -33,6 +33,9 @@ TpMeCMS是一款基于FastAdmin框架开发的，FastAdmin基于ThinkPHP5+Bootst
     添加/修改栏目选择表即可（如果数据库表名未修改不用修改）
 
 ## 注意事项及说明
+* 数据库设计要求
+    * 字段命名要求https://doc.fastadmin.net/doc/database.html
+    * 使用后台的《在线命令管理》或者用命令php think crud -t 表名生成CRUD时会自动生成对应的HTML元素和组件
 * 数据库说明
     * xx代表表前缀
     * xx_cate CMS栏目的栏目，不能删除（可以添加其他通用字段
@@ -41,6 +44,7 @@ TpMeCMS是一款基于FastAdmin框架开发的，FastAdmin基于ThinkPHP5+Bootst
     * xx_admin 登陆后台的账号
     * xx_command Fastadmin的一键命令插件记录
     * xx_config 网站常规配置就在这里面，在后台可直接添加
+    * xx_news 列表页的内容，通用都可以复制此表改名改备注即可（列表页面的 deletetime 字段不要删除，用户在后台删除后，可以进入回收站，但前台会看不见，以防误操作）
 
 
 ## 在线演示

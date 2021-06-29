@@ -1,0 +1,101 @@
+/*--------------------
+// App Name: Evora - Real Estate HTML Template
+// Author: Wicombit
+// Author URI: https://themeforest.net/user/wicombit/portfolio
+// Version: 1.00
+--------------------*/
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (max-width: 550px) {
+
+.ev-text-center-m{
+	text-align: center !important;
+}
+
+.ev-section-margin-v-l{
+	margin-top: 80px !important;
+	margin-bottom: 80px !important;
+}
+
+.ev-hero-image-2 h1, .ev-hero-image h1, .ev-hero-video h1{
+	font-size: 24px !important;
+}
+
+.ev-hero-image-2 h4, .ev-hero-image h4, .ev-hero-video h4{
+	font-size: 16px !important;
+}
+
+.ev-hero-image .ev-hero-image-overlay{
+	height: 450px !important;
+}
+
+.ev-hero-video .ev-hero-video-overlay{
+	height: 450px !important;
+}
+
+.ev-card-2 .uk-cover-container{
+	border-radius: 8px 8px 0 0 !important;
+}
+
+.ev-card-4 .uk-cover-container{
+	border-radius: 8px 8px 0 0 !important;
+}
+
+.ev-blog-1 .uk-card-footer a{
+	font-size: 13px !important;
+}
+
+.ev-blog-2 .uk-cover-container {
+    border-radius: 8px 8px 0 0 !important;
+}
+
+#advanced-search .nice-select.wide{
+	font-size: 14px;
+}
+
+.ev-order-by{
+	font-size: 14px !important;
+}
+
+}
+
+
+/* Larger than tablet */
+@media (max-width: 750px) {
+
+.ev-single-property .ev-slider-2 .ev-col-1 .uk-cover-container{
+	height: 300px !important;
+}
+
+.ev-single-property .ev-slider-2 .ev-col-2 .uk-cover-container{
+	height: 100px !important;
+}
+
+.ev-slide-2 .slick-arrow, .ev-slide-3 .slick-arrow{
+	display: none !important;
+}
+
+.ev-slide-2 .ev-slide-content{
+	width: 100%;
+}
+
+.ev-slide-3 .ev-slide-item{
+	height: 500px !important;
+}
+
+
+}
+
+/* Larger than desktop */
+@media (max-width: 950px) {
+	.ev-featured-city-1{
+	min-height: 200px !important;
+}
+
+	.ev-featured-city-2{
+	min-height: 200px !important;
+}
+}
+
+/* Larger than Desktop HD */
+@media (max-width: 1200px) {}

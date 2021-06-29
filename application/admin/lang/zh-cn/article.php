@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'Cate_id'     => '栏目ID',
+    'Model_id'    => '模型ID',
+    'Admin_id'    => '管理员ID',
+    'Title'       => '文章标题',
+    'Flag'        => '标志',
+    'Style'       => '样式',
+    'Image'       => '缩略图',
+    'Images'      => '组图',
+    'Seotitle'    => 'SEO标题',
+    'Keywords'    => '关键字',
+    'Description' => '描述',
+    'Tags'        => 'TAG',
+    'Views'       => '浏览次数',
+    'Comments'    => '评论次数',
+    'Likes'       => '点赞数',
+    'Dislikes'    => '点踩数',
+    'Createtime'  => '创建时间',
+    'Updatetime'  => '更新时间',
+    'Publishtime' => '发布时间',
+    'Deletetime'  => '删除时间',
+    'Memo'        => '备注',
+    'Status'      => '状态',
+    'Status 1'    => '正常',
+    'Status 2'    => '隐藏',
+    'Content'     => '内容',
+    'Cate.name'   => '栏目名称'
+];

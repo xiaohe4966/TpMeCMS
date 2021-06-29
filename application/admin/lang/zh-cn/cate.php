@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'Link'         => '链接',
+    'Page'         => '单页',
+    'List'         => '列表',
+    'Type'         => '类型',
+    'Model_id'     => '模型ID',
+    'Parent_id'    => '父ID',
+    'Name'         => '栏目名称',
+    'Image'        => '图片',
+    'Flag'         => '标志',
+    'Seotitle'     => 'SEO标题',
+    'Keywords'     => '关键字',
+    'Description'  => '描述',
+    'Diyname'      => '自定义名称',
+    'Outlink'      => '链接',
+    'Items'        => '文章数量',
+    'Weigh'        => '权重',
+    'Tpl'          => '栏目页模板',
+    'Listtpl'      => '列表页模板',
+    'Showtpl'      => '详情页模板',
+    'Pagesize'     => '分页大小',
+    'Isnav_switch' => '是否导航显示',
+    'Createtime'   => '创建时间',
+    'Updatetime'   => '更新时间',
+    'Status'       => '状态',
+    'Status 1'     => '正常',
+    'Status 2'     => '隐藏'
+];

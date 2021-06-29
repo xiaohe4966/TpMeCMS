@@ -1,0 +1,190 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-type" data-rule="required" class="form-control selectpicker" name="row[type]">
+                {foreach name="typeList" item="vo"}
+                    <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Model_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-model_id" data-rule="required" data-source="model/index" class="form-control selectpage" name="row[model_id]" type="text" value="">
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Parent_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-parent_id"  data-source="cate/index" class="form-control selectpage" name="row[parent_id]" type="text" value="">
+        </div>
+    </div> -->
+
+
+    <div class="form-group">
+        <label for="c-pid" class="control-label col-xs-12 col-sm-2">{:__('Parent_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select id="c-pid" data-rule="required" class="form-control selectpicker" name="row[parent_id]">
+                {foreach name="parentList" item="vo"}
+                <option data-type="{$vo.type}" value="{$key}" {in name="key" value=""}selected{/in}>{$vo.name}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" class="form-control" name="row[name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image" class="form-control" size="50" name="row[image]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-image" class="btn btn-danger faupload" data-input-id="c-image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Flag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-flag" class="form-control" name="row[flag]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Seotitle')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-seotitle" class="form-control" name="row[seotitle]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Keywords')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-keywords" class="form-control" name="row[keywords]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" class="form-control" name="row[description]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Diyname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-diyname" class="form-control" name="row[diyname]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Outlink')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-outlink" class="form-control" name="row[outlink]" type="text" value="">
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Items')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-items" data-rule="required" class="form-control" name="row[items]" type="number" value="0">
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-weigh" data-rule="required" class="form-control" name="row[weigh]" type="number" value="0">
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tpl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tpl" class="form-control" name="row[tpl]" type="text" value="">
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Listtpl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-listtpl" class="form-control" name="row[listtpl]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Showtpl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-showtpl" class="form-control" name="row[showtpl]" type="text" value="">
+        </div>
+    </div> -->
+
+    <div class="form-group tf tf-channel tf-list">
+        <label for="c-listtpl" class="control-label col-xs-12 col-sm-2">{:__('Listtpl')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-listtpl" data-rule="required" class="form-control selectpage" name="row[listtpl]" data-source="cate/get_template_list" data-params='{"type":"list"}' data-primary-key="name" data-field="name" type="text" placeholder="自定义模板文件必须以list开头">
+        </div>
+    </div>
+    <div class="form-group tf tf-channel tf-list">
+        <label for="c-showtpl" class="control-label col-xs-12 col-sm-2">{:__('Showtpl')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-showtpl" data-rule="required" class="form-control selectpage" name="row[showtpl]" data-source="cate/get_template_list" data-params='{"type":"show"}' data-primary-key="name" data-field="name" type="text" placeholder="自定义模板文件必须以show开头">
+        </div>
+    </div>
+
+    <div class="form-group tf tf-channel tf-list">
+        <label for="c-table_name" class="control-label col-xs-12 col-sm-2">数据库表名</label>
+        <div class="col-xs-12 col-sm-4">
+            <select id="c-table_name"  class="form-control selectpicker" name="row[table_name]">
+                {foreach name="tableList" item="vo"}
+                <option  value="{$key}" >{$key}👉{$vo}</option>
+                {/foreach}
+            </select>
+            <!-- <input id="c-table_name" data-rule="required" class="form-control selectpage" name="row[table_name]" data-source="cate/ajax_table_list" data-params='{"type":"show"}' data-primary-key="name" data-field="ps" type="text" placeholder="选择改分类的数据表，没有请创建"> -->
+        </div>
+       
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pagesize')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pagesize" data-rule="required" class="form-control" name="row[pagesize]" type="number" value="10">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Isnav_switch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <input  id="c-isnav_switch" name="row[isnav_switch]" type="hidden" value="1">
+            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-isnav_switch" data-yes="1" data-no="0" >
+                <i class="fa fa-toggle-on text-success  fa-2x"></i>
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="1"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
