@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>匀熵教育-匀熵教育介绍</title>
+<!-- Stylesheets -->
+<link href="__CMS__/css/bootstrap.css" rel="stylesheet">
+<link href="__CMS__/css/style.css" rel="stylesheet">
+<link href="__CMS__/css/responsive.css" rel="stylesheet">
+
+<!--Color Switcher Mockup-->
+
+
+<!--Color Themes-->
+<link id="theme-color-file" href="__CMS__/css/color-themes/default-theme.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="__CMS__/js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+ 	
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+    <!-- Main Header-->
+    <header class="main-header header-style-two">
+    	
+    	<!--Header-Upper-->
+       {include file="index/common/header_upper" /}
+        <!--End Header Upper-->
+        
+        <!--Header Lower-->
+        {include file="index/common/nav" /}
+        <!--End Header Lower-->
+    
+    	<!--Sticky Header-->
+        <div class="sticky-header">
+        	<div class="auto-container clearfix">
+            {include file="index/common/logo_and_login" /}
+                
+                <!--Right Col-->
+                {include file="index/common/nav2" /}
+                
+            </div>
+        </div>
+        <!--End Sticky Header-->
+    
+    </header>
+    <!--End Main Header -->
+    
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(__CMS__/images/5.jpg)">
+    	<div class="auto-container">
+        	<div class="clearfix">
+            	<div class="pull-left">
+                	<h1>{$cate.name}</h1>
+                </div>
+                <div class="pull-right">
+                    <ul class="page-breadcrumb">
+                        <li><a href="/">首页</a></li>
+                        <li>{$cate.name}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+    
+    <!--About Clinic Section-->
+    <section class="about-clinic-section">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+            	
+                <!--Image Column-->
+                <div class="image-column col-md-4 col-sm-12 col-xs-12">
+                	<div class="image">
+                    	<img src="{$content.image}" alt="" />
+                    </div>
+                </div>
+                <!--Content Column-->
+                <div class="content-column col-md-8 col-sm-12 col-xs-12">
+                	<div class="inner-column">
+                    	<div class="sec-title">
+                        	<h2>{$content.title}</h2>
+                            <div class="text">栏目：《{$cate.name}》</div>
+                        </div>
+                        <div class="" style="font-size: 17px;margin-bottom: 50px; line-height: 30px;">
+                            {$content.content}
+                        </div>
+                        <!-- <a href="contact.html" class="theme-btn btn-style-one">联系我们</a> -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+  
+    
+    <!--Main Footer-->
+{include file="index/common/footer" /}
+    
+</div>
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+<!-- Color Palate / Color Switcher -->
+<div class="color-palate">
+    
+    
+    <div class="various-color clearfix">
+        <div class="colors-list">
+            <span class="palate default-color active" data-theme-file="css/color-themes/default-theme.css"></span>
+            <span class="palate teal-color" data-theme-file="css/color-themes/teal-theme.css"></span>
+            <span class="palate green-color" data-theme-file="css/color-themes/green-theme.css"></span>
+            <span class="palate aqua-color" data-theme-file="css/color-themes/aqua-theme.css"></span>
+            <span class="palate blue-color" data-theme-file="css/color-themes/blue-theme.css"></span>
+            <span class="palate orange-color" data-theme-file="css/color-themes/orange-theme.css"></span>
+            <span class="palate olive-color" data-theme-file="css/color-themes/olive-theme.css"></span>
+            <span class="palate red-color" data-theme-file="css/color-themes/red-theme.css"></span>
+        </div>
+    </div>
+
+    
+
+</div>
+<!-- /.End Of Color Palate -->
+
+<script src="__CMS__/js/jquery.js"></script>
+<script src="__CMS__/js/bootstrap.min.js"></script>
+<script src="__CMS__/js/jquery.fancybox.js"></script>
+
+<script src="__CMS__/js/owl.js"></script>
+<script src="__CMS__/js/wow.js"></script>
+<script src="__CMS__/js/appear.js"></script>
+<script src="__CMS__/js/script.js"></script>
+
+<!--Color Switcher-->
+<script src="__CMS__/js/color-settings.js"></script>
+</body>
+</html>

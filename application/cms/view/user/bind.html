@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="uk-height-1-1">
+<head>
+    <title>{$site.name}-绑定手机</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__CMS__/assets/css/styles1.css" />
+    <script src="__CMS__/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="__CMS__/assets/js/uikit.min.js"></script>
+    <script src="__CMS__/assets/js/uikit-icons.min.js"></script>
+</head>
+<body class="uk-height-1-1">
+
+    <div class="uk-background-cover uk-background-center-center uk-height-1-1 ev-section-padding-v-s uk-panel uk-flex uk-flex-wrap uk-flex-middle uk-flex-center uk-light" style="background-image: url(__CMS__/images/bg-img-1.jpg);">
+        <div class="uk-overlay ev-overlay-secondary uk-position-cover"></div>
+
+        <div class="ev-auth-2 uk-position-z-index">
+
+            <a href="{$site.index_url}">
+                <img class="ev-logo" src="__CMS__/images/dl-logo.png">
+            </a>
+
+            <h5 class="uk-heading-line"><span>请关注公众号</span></h5>
+
+            <form method="POST" action="">
+                <input type="hidden" name="invite_user_id" value="0" />
+                
+                {:token()}
+                <div class="uk-margin">
+                    <div class="uk-width-1-1 uk-inline">
+                        <img src="{$site.wxqr_img}" alt="">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    
+                    <div class="uk-width-1-1 uk-inline">
+                        <input class="uk-input uk-border-pill"  name="mobile" placeholder="手机号" type="text">
+                    </div>
+                </div>
+                <div class="cb">
+                    <div class="uk-margin fL" style="max-width: 200px;">
+                        <div class="uk-width-1-1 uk-inline">
+                            <input class="uk-input uk-border-pill" placeholder="验证码" type="text">
+                        </div>
+                    </div>
+                    <div class="fL zcnew" ><a href="">发送验证码</a></div>
+                </div>
+                <!--<div class="uk-margin">-->
+                <!--    <div class="uk-width-1-1 uk-inline">-->
+                <!--        <input class="uk-input uk-border-pill" placeholder="邮箱"  name="email"  type="text">-->
+                <!--    </div>-->
+                <!--</div>-->
+                <!--<div class="uk-margin">-->
+                <!--    <div class="uk-width-1-1 uk-inline">-->
+                <!--        <input class="uk-input uk-border-pill"  name="password"  placeholder="密码" type="text">-->
+                <!--    </div>-->
+                <!--</div>-->
+
+                <!--<div class="uk-margin">
+                    <div class="uk-width-1-1 padding-h uk-inline uk-text-left uk-text-small">
+                    <label><input class="uk-checkbox" type="checkbox"> I Agree to <a class="ev-link-primary" href="#">Terms and Conditions</a></label>
+                    </div>
+                </div>-->
+
+
+                <button class="uk-button uk-width-1-1 uk-border-pill" style="font-size: 18px;">保存</button>
+
+                <div class="uk-margin uk-width-1-1 uk-text-small" style="font-size: 17px;">
+                <!--已有账号? <a class="ev-link-primary uk-text-bold" href="/cms/user/login">直接登陆</a>-->
+                    <!--<a class="uk-margin uk-display-block" href="{$site.index_url}">返回网站首页</a>-->
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+<script src="__CMS__/assets/js/nice-select.min.js"></script>
+<script src="__CMS__/assets/js/moment.min.js"></script>
+<script src="__CMS__/assets/js/daterangepicker.js"></script>
+<script src="__CMS__/assets/js/fontawesome.min.js"></script>
+<script src="__CMS__/assets/js/main.js"></script>
+
+
+<script>
+    // $()
+</script>
+</body>
+</html>

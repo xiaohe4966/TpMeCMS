@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>匀熵教育-教师风采</title>
+<!-- Stylesheets -->
+<link href="__CMS__/css/bootstrap.css" rel="stylesheet">
+<link href="__CMS__/css/style.css" rel="stylesheet">
+<link href="__CMS__/css/responsive.css" rel="stylesheet">
+
+<!--Color Switcher Mockup-->
+<link href="__CMS__/css/color-switcher-design.css" rel="stylesheet">
+
+<!--Color Themes-->
+<link id="theme-color-file" href="__CMS__/css/color-themes/default-theme.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="__CMS__/js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+ 	
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+    <!-- Main Header-->
+    <header class="main-header header-style-two">
+    	
+    	<!--Header-Upper-->
+       {include file="index/common/header_upper" /}
+        <!--End Header Upper-->
+        
+        <!--Header Lower-->
+        {include file="index/common/nav" /}
+        <!--End Header Lower-->
+    
+    	<!--Sticky Header-->
+        <div class="sticky-header">
+        	<div class="auto-container clearfix">
+            {include file="index/common/logo_and_login" /}
+                
+                <!--Right Col-->
+                {include file="index/common/nav2" /}
+                
+            </div>
+        </div>
+        <!--End Sticky Header-->
+    
+    </header>
+    <!--End Main Header -->
+    
+    <!--Page Title-->
+    {include file="index/common/banner_nav" /}
+    <!--End Page Title-->
+    
+    <!--Services Page Section-->
+    <section class="services-page-section">
+    	<div class="auto-container">
+        	
+        	<div class="row clearfix">
+            	
+                
+              
+                <!--Services Block Two-->
+                {volist name="list" id="v"}
+                <div class="services-block-two col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                	<div class="inner-box">
+                    	<div class="image">
+                        	<img src="{$v.image}" alt="" />
+                            <a href="{$v.url}" class="overlay"></a>
+                        </div>
+                        <div class="lower-content">
+                        	<h3><a href="{$v.url}">{$v.title}</a></h3>
+                            <div class="text">{$v.description}</div>
+                            <a href="{$v.url}" class="read-more">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+                
+                
+            </div>
+        </div>
+    </section>
+    <!--End Services Page Section-->
+    
+    <!--Appointment Section-->
+    <section class="appointment-section" style="background-image:url(__CMS__/images/3.jpg);">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+            	<!--Content Column-->
+            	<div class="content-column col-md-5 col-sm-12 col-xs-12">
+                	<div class="inner-column">
+                    	<h2>在线留言 <br>您也可以进行课程咨询</h2>
+                        <div class="text">解决您的需求，就是我们的使命</div>
+                    </div>
+                </div>
+                <!--Form Column-->
+            	<div class="form-column col-md-7 col-sm-12 col-xs-12">
+                	<div class="inner-column">
+                    	
+                        <!-- Default Form -->
+                        <div class="default-form">
+                                
+                            <!--Contact Form-->
+                            <form method="post" action="contact.html">
+                                <div class="row clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                        <input type="text" name="username" placeholder="请输入您的真实姓名" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                        <input type="email" name="email" placeholder="请输入您的有效手机号" required>
+                                    </div>
+                                    
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                        <textarea name="message" placeholder="请输入您的留言内容"></textarea>
+                                    </div>
+                                    
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                        <button class="theme-btn btn-style-one" type="submit" name="submit-form">提 交</button>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                                
+                        </div>
+                        <!--End Default Form --> 
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Appointment Section-->
+    
+    <!--Main Footer-->
+{include file="index/common/footer" /}
+    
+</div>
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+<!-- Color Palate / Color Switcher -->
+<div class="color-palate">
+    
+    
+    <div class="various-color clearfix">
+        <div class="colors-list">
+            <span class="palate default-color active" data-theme-file="css/color-themes/default-theme.css"></span>
+            <span class="palate teal-color" data-theme-file="css/color-themes/teal-theme.css"></span>
+            <span class="palate green-color" data-theme-file="css/color-themes/green-theme.css"></span>
+            <span class="palate aqua-color" data-theme-file="css/color-themes/aqua-theme.css"></span>
+            <span class="palate blue-color" data-theme-file="css/color-themes/blue-theme.css"></span>
+            <span class="palate orange-color" data-theme-file="css/color-themes/orange-theme.css"></span>
+            <span class="palate olive-color" data-theme-file="css/color-themes/olive-theme.css"></span>
+            <span class="palate red-color" data-theme-file="css/color-themes/red-theme.css"></span>
+        </div>
+    </div>
+
+    
+
+</div>
+<!-- /.End Of Color Palate -->
+
+<script src="__CMS__/js/jquery.js"></script>
+<script src="__CMS__/js/bootstrap.min.js"></script>
+<script src="__CMS__/js/jquery.fancybox.js"></script>
+
+<script src="__CMS__/js/owl.js"></script>
+<script src="__CMS__/js/wow.js"></script>
+<script src="__CMS__/js/appear.js"></script>
+<script src="__CMS__/js/script.js"></script>
+
+<!--Color Switcher-->
+<script src="__CMS__/js/color-settings.js"></script>
+</body>
+</html>

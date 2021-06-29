@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>匀熵教育-资源中心</title>
+<!-- Stylesheets -->
+<link href="__CMS__/css/bootstrap.css" rel="stylesheet">
+<link href="__CMS__/css/style.css" rel="stylesheet">
+<link href="__CMS__/css/responsive.css" rel="stylesheet">
+
+<!--Color Switcher Mockup-->
+<link href="__CMS__/css/color-switcher-design.css" rel="stylesheet">
+
+<!--Color Themes-->
+<link id="theme-color-file" href="__CMS__/css/color-themes/default-theme.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="__CMS__/js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+ 	
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+    <!-- Main Header-->
+    <header class="main-header header-style-two">
+    	
+    	<!--Header-Upper-->
+       {include file="index/common/header_upper" /}
+        <!--End Header Upper-->
+        
+        <!--Header Lower-->
+        {include file="index/common/nav" /}
+        <!--End Header Lower-->
+    
+    	<!--Sticky Header-->
+        <div class="sticky-header">
+        	<div class="auto-container clearfix">
+            {include file="index/common/logo_and_login" /}
+                
+                <!--Right Col-->
+                {include file="index/common/nav2" /}
+                
+            </div>
+        </div>
+        <!--End Sticky Header-->
+    
+    </header>
+    <!--End Main Header -->
+    
+    <!--Page Title-->
+    {include file="index/common/banner_nav" /}
+    <!--End Page Title-->
+    
+    <!--Therapists Section-->
+    <section class="therapists-section">
+    	<div class="auto-container">
+
+            <div class="row clearfix">
+            	
+                
+                
+                
+                
+               
+                
+                
+                
+                
+               
+                
+                
+                
+                {volist name="list" id="v"}
+                <div class="doctor-block col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                	<div class="inner-box">
+                    	<div class="image" >
+                        	<a href="{$v.url}"><img style="border-radius: 10px;" src="{$v.image}" alt="" /></a>
+                        </div>
+                        <div class="lower-box">
+                        	<h3><a href="{$v.url}">{$v.title}</a></h3>
+                            <div class="designation">{$v.description}</div>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+                
+                
+            </div>
+            
+        </div>
+    </section>
+    <!--End Faq Section-->
+    
+    <!--Main Footer-->
+{include file="index/common/footer" /}
+    
+</div>
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+<!-- Color Palate / Color Switcher -->
+<div class="color-palate">
+    
+    
+    <div class="various-color clearfix">
+        <div class="colors-list">
+            <span class="palate default-color active" data-theme-file="css/color-themes/default-theme.css"></span>
+            <span class="palate teal-color" data-theme-file="css/color-themes/teal-theme.css"></span>
+            <span class="palate green-color" data-theme-file="css/color-themes/green-theme.css"></span>
+            <span class="palate aqua-color" data-theme-file="css/color-themes/aqua-theme.css"></span>
+            <span class="palate blue-color" data-theme-file="css/color-themes/blue-theme.css"></span>
+            <span class="palate orange-color" data-theme-file="css/color-themes/orange-theme.css"></span>
+            <span class="palate olive-color" data-theme-file="css/color-themes/olive-theme.css"></span>
+            <span class="palate red-color" data-theme-file="css/color-themes/red-theme.css"></span>
+        </div>
+    </div>
+
+    
+</div>
+<!-- /.End Of Color Palate -->
+
+<script src="__CMS__/js/jquery.js"></script> 
+<!--Revolution Slider-->
+<script src="__CMS__/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="__CMS__/js/main-slider-script.js"></script>
+
+<script src="__CMS__/js/bootstrap.min.js"></script>
+<script src="__CMS__/js/jquery.fancybox.js"></script>
+
+<script src="__CMS__/js/owl.js"></script>
+<script src="__CMS__/js/wow.js"></script>
+<script src="__CMS__/js/appear.js"></script>
+<script src="__CMS__/js/script.js"></script>
+
+<!--Google Map APi Key-->
+<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyBKS14AnP3HCIVlUpPKtGp7CbYuMtcXE2o"></script>
+<script src="__CMS__/js/map-script.js"></script>
+<!--End Google Map APi-->
+
+<!--Color Switcher-->
+<script src="__CMS__/js/color-settings.js"></script>
+</body>
+</html>

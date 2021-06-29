@@ -1,0 +1,87 @@
+<footer class="main-footer">
+    <div class="auto-container">
+        <!--Widgets Section-->
+        <div class="widgets-section">
+            <div class="row clearfix">
+                
+                <!--big column-->
+                <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                    <div class="row clearfix">
+                    
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-7 col-sm-6 col-xs-12">
+                            <div class="footer-widget logo-widget">
+                                <div class="logo">
+                                    <a href="{$site.index_url}"><img src="__CMS__/images/foter-logo.png" alt="" /></a>
+                                </div>
+                                <div class="text">核心代码简洁、明了，适用于微信小程序/公众号，PC网站，手机网站，App（Api接口）等集于一体的Tp框架，后台直接生成数据库的增删改查，方便二次开开发，了解thinkphp5即可上手...</div>
+                            </div>
+                        </div>
+                        
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-5 col-sm-6 col-xs-12">
+                            <div class="footer-widget links-widget">
+                                <h2>快速链接</h2>
+                                <div class="widget-content">
+                                    <ul class="list">
+                                        {volist name="nav" id="v"}
+                                        <li><a href="{$v.url}">{$v.name}</a></li>
+                                        {/volist}
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!--big column-->
+                <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                    <div class="row clearfix">
+                    
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                            <div class="footer-widget links-widget">
+                                <h2>用户中心</h2>
+                                <div class="widget-content">
+                                    <ul class="list">
+                                        <li><a href="/cms/user/register">用户注册</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--Footer Column-->
+                        <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                            <div class="footer-widget info-widget">
+                                <h2>联系方式</h2>
+                                <div class="widget-content">
+                                    <div class="number">手机：{$site.tel}</div>
+                                    <div class="number">邮箱：{$site.email}</div>
+                                    <div class="text">{$site.addr}<bR>{$site.addr2}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!--Footer Bottom-->
+        <div class="footer-bottom">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <div class="copyright">{$site.banquan}  <a href="https://beian.miit.gov.cn/">{$site.beian}</a></div>
+                </div>
+                <div class="pull-right">
+                    <div class="created">{$site.technical_support}</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</footer>

@@ -1,0 +1,44 @@
+<div class="header-upper">
+    <div class="auto-container">
+        <div class="inner-container clearfix">
+            
+            <div class="pull-left logo-outer">
+                <div class="logo"><a href="{$site.index_url}"><img src="__CMS__/images/logo.png" alt="" /></a></div>
+            </div>
+            
+            <div class="pull-right upper-right clearfix">
+                
+                <!--Info Box-->
+                <div class="upper-column info-box">
+                    <div class="icon-box"><span class="fa fa-phone"></span></div>
+                    <ul>
+                        <li><strong>{$site.tel}</strong></li>
+                    </ul>
+                </div>
+                
+                <!--Info Box-->
+                <!--<div class="upper-column info-box">
+                    <div class="icon-box"><span class="flaticon-note"></span></div>
+                    <ul>
+                        <li>contact@mindron.com</li>
+                    </ul>
+                </div>-->
+                
+                <!--Info Box-->
+                <div class="upper-column info-box">
+                    
+                    {if $user}
+                    <a href="#" class="theme-btn btn-style-one">{$user['username']}</a>
+                    <a href="/cms/user/logout" class="theme-btn btn-style-one">退出登陆</a>
+                    {else /}
+                    
+                    <a href="/cms/user/login" class="theme-btn btn-style-one">登 陆</a>
+                    <a href="/cms/user/register" class="theme-btn btn-style-one">注 册</a>
+                    {/if}
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>

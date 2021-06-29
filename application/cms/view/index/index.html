@@ -1,0 +1,625 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$site.name}</title>
+<!-- Stylesheets -->
+<link href="__CMS__/css/bootstrap.css" rel="stylesheet">
+<link href="__CMS__/plugins/revolution/css/settings.css" rel="stylesheet" type="text/css"><!-- REVOLUTION SETTINGS STYLES -->
+<link href="__CMS__/plugins/revolution/css/layers.css" rel="stylesheet" type="text/css"><!-- REVOLUTION LAYERS STYLES -->
+<link href="__CMS__/plugins/revolution/css/navigation.css" rel="stylesheet" type="text/css"><!-- REVOLUTION NAVIGATION STYLES -->
+<link href="__CMS__/css/style.css" rel="stylesheet">
+<link href="__CMS__/css/responsive.css" rel="stylesheet">
+<link id="theme-color-file" href="__CMS__/css/color-themes/default-theme.css" rel="stylesheet">
+<!--Color Switcher Mockup-->
+
+
+<!--Color Themes-->
+
+
+<link rel="shortcut icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="__CMS__/images/favicon.png" type="image/x-icon">
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="__CMS__/js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div class="page-wrapper">
+ 	
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+    <!-- Main Header -->
+    <header class="main-header header-style-two">
+    	
+    	<!--Header-Upper-->
+        <div class="header-upper">
+        	<div class="auto-container">
+            	<div class="inner-container clearfix">
+                	
+                	<div class="pull-left logo-outer">
+                    	<div class="logo"><a href="__CMS__/index.html"><img src="__CMS__/images/logo.png" alt="" /></a></div>
+                    </div>
+                    
+                    <div class="pull-right upper-right clearfix">
+                    	
+                        <!--Info Box-->
+                        <div class="upper-column info-box">
+                        	<div class="icon-box"><span class="fa fa-phone"></span></div>
+                            <ul>
+                            	<li><strong>{$site.tel}</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <!--Info Box-->
+                        <!--<div class="upper-column info-box">
+                        	<div class="icon-box"><span class="flaticon-note"></span></div>
+                            <ul>
+                            	<li>contact@mindron.com</li>
+                            </ul>
+                        </div>-->
+                        
+                        <!--Info Box-->
+                        <div class="upper-column info-box">
+                         
+                            {if $user}
+                            <a href="#" class="theme-btn btn-style-one">{$user['nickname']}</a>
+                            <a href="/cms/user/logout" class="theme-btn btn-style-one">退出登陆</a>
+                            {else /}
+                            
+                            <a href="/cms/user/login" class="theme-btn btn-style-one">登 陆</a>
+                            <a href="/cms/user/register" class="theme-btn btn-style-one">注 册</a>
+                            {/if}
+                        </div>
+
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--End Header Upper-->
+        
+        <!--Header Lower-->
+        <div class="header-lower">
+        	<div class="auto-container clearfix">
+            	<div class="nav-outer clearfix">
+                    <!-- Main Menu -->
+                    <nav class="main-menu">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->    	
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="navbar-collapse collapse clearfix" id="bs-example-navbar-collapse-1">
+                            <ul class="navigation clearfix">
+                                <li class="current"><a href="{$site.index_url}">首页</a></li>
+
+                                {volist name="nav" id="v"}                            
+                                    {if $v.childlist}
+                                    <li class="dropdown"><a href="{$v.url}">{$v.name}</a>                                
+                                        <ul>
+                                            {volist name="$v.childlist" id="v2"}                                       
+                                         
+                                                {if $v2.childlist}                                            
+                                                    <li class="dropdown"><a href="{$v2.url}">{$v2.name}</a>
+                                                        <ul>
+                                                            {volist name="$v2.childlist" id="v3"}
+                                                            <li><a href="{$v3.url}">{$v3.name}</a></li>
+                                                            {/volist}                                
+                                                        </ul>
+                                                    </li>
+                                                {else /}
+                                               
+                                                    <li><a href="{$v2.url}">{$v2.name}</a></li>
+                                                {/if}
+                                            {/volist}
+                                        </ul>
+                                    </li>   
+                                    {else /}
+                                        <li><a href="{$v.url}">{$v.name}</a></li>
+                                    {/if}
+                                {/volist}
+
+                         
+                             
+                                <!--                             
+                                <li class="dropdown current"><a href="__CMS__/">资源中心</a>
+                              
+                                    <ul>
+                                        <li><a href="__CMS__/platform.html">实训平台入口</a></li>
+                                        <li class="dropdown"><a href="__CMS__/#">其他资料下载</a>
+                                            <ul>
+                                                <li><a href="__CMS__/video.html">视频下载</a></li>
+                                                <li><a href="__CMS__/software.html">软件下载</a></li>
+                                                <li><a href="__CMS__/file.html">文件下载</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>    -->
+                       
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- Main Menu End-->
+
+                    
+                    
+                </div>
+                 
+            </div>
+        </div>
+        <!--End Header Lower-->
+    
+    	<!--Sticky Header-->
+        <div class="sticky-header">
+        	<div class="auto-container clearfix">
+            	<!--Logo-->
+            	<div class="logo pull-left">
+                	<a href="__CMS__/index.html" class="img-responsive"><img src="__CMS__/images/logo.png" alt="" title=""></a>
+                </div>
+                
+                <!--Btn Outer-->
+                <div class="btn-outer">
+                   
+
+                    {if $user}
+                    <a href="/cms/user/logout" class="theme-btn btn-style-one">退出登陆</a>
+                    {else /}
+                    <a href="/cms/user/login" class="theme-btn btn-style-one">登 陆</a>
+                    <a href="/cms/user/register" class="theme-btn btn-style-one">注 册</a>
+                    {/if}
+                </div>
+                
+                <!--Right Col-->
+                <div class="right-col pull-right">
+                	<!-- Main Menu -->
+                    <nav class="main-menu">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->    	
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li class="current"><a href="{$site.index_url}">首页</a></li>
+                                <!-- {volist name="nav" id="v"}
+
+                                <li ><a href="{$v.url}">{$v.name}</a></li>
+                                {/volist}
+                                <li><a href="__CMS__/teacher.html">教师风采</a></li>
+                                <li ><a href="__CMS__/course.html">课程中心</a></li>
+                                <li class="current dropdown"><a href="__CMS__/#">资源中心</a>
+                                    <ul>
+                                        <li><a href="__CMS__/platform.html">实训平台入口</a></li>
+                                        <li class="dropdown"><a href="__CMS__/#">其他资料下载</a>
+                                            <ul>
+                                                <li><a href="__CMS__/video.html">视频下载</a></li>
+                                                <li><a href="__CMS__/software.html">软件下载</a></li>
+                                                <li><a href="__CMS__/file.html">文件下载</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li> -->
+
+
+                            {volist name="nav" id="v"}                            
+                                {if $v.childlist}
+                                <li class="dropdown"><a href="{$v.url}">{$v.name}</a>                                
+                                    <ul>
+                                        {volist name="$v.childlist" id="v2"}                                       
+                                     
+                                            {if $v2.childlist}                                            
+                                                <li class="dropdown"><a href="{$v2.url}">{$v2.name}</a>
+                                                    <ul>
+                                                        {volist name="$v2.childlist" id="v3"}
+                                                        <li><a href="{$v3.url}">{$v3.name}</a></li>
+                                                        {/volist}                                
+                                                    </ul>
+                                                </li>
+                                            {else /}
+                                           
+                                                <li><a href="{$v2.url}">{$v2.name}</a></li>
+                                            {/if}
+                                        {/volist}
+                                    </ul>
+                                </li>   
+                                {else /}
+                                    <li><a href="{$v.url}">{$v.name}</a></li>
+                                {/if}
+                            {/volist}
+                          
+                                
+                             </ul>
+                        </div>
+                    </nav><!-- Main Menu End-->
+                </div>
+                
+            </div>
+        </div>
+        <!--End Sticky Header-->
+    
+    </header>
+    
+    <!--Main Slider-->
+    <section class="main-slider">
+    	
+        <div class="rev_slider_wrapper fullwidthbanner-container"  id="rev_slider_three_wrapper" data-source="gallery">
+            <div class="rev_slider fullwidthabanner" id="rev_slider_three" data-version="5.4.1">
+                <ul>
+                	
+                    <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1688" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/image-4.jpg" data-title="Slide Title" data-transition="parallaxvertical">
+                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="__CMS__/images/image-1.jpg"> 
+                    
+                    <div class="tp-caption" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','800','800','450']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['-90','-90','-90','-140']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<h2>技术助你乘风破浪 <br> <span class="theme_color">初心至善</span> 匠心育人</h2>
+                    </div>
+                    
+                    <div class="tp-caption" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['550','750','750','500']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['30','40','10','0']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<div class="text">深化教研创新 • 变革行业发展 • 坚守匠心品质 • 培育数字人才</div>
+                    </div>
+                    
+                    <div class="tp-caption tp-resizeme" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['560','700','700','550']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['130','150','120','130']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<a href="{tp:cate id="52" type="url"}" class="theme-btn btn-style-one">点击了解我们</a>
+                    </div>
+                    
+                    </li>
+                    
+                    <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1689" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/image-2.jpg" data-title="Slide Title" data-transition="parallaxvertical">
+                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="__CMS__/images/image-2.jpg"> 
+                    
+                    <div class="tp-caption" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','800','800','450']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['-90','-90','-90','-140']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<h2>人工智能教育与服务引擎<br>  <span class="theme_color">项目实战贯穿</span></h2>
+                    </div>
+                    
+                    <div class="tp-caption" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['550','750','750','500']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['30','40','10','0']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<div class="text">Python全栈+人工智能 </div>
+                    </div>
+                    
+                    <div class="tp-caption tp-resizeme" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['560','700','700','550']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['130','150','120','130']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<a href="{tp:cate id="41" type="url"}" class="theme-btn btn-style-one">点击了解课程</a>
+                    </div>
+                    
+                    </li>
+                    
+                    <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1690" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/image-3.jpg" data-title="Slide Title" data-transition="parallaxvertical">
+                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="__CMS__/images/image-3.jpg"> 
+                    
+                    <div class="tp-caption" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','800','800','450']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['-90','-90','-90','-140']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<h2>人工智能赋能各行各业 <br>  <span class="theme_color">商业化前景无限广阔</span></h2>
+                    </div>
+                    
+                    <div class="tp-caption" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['550','750','750','500']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['30','40','10','0']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<div class="text">顺势而为，AI创新未来 </div>
+                    </div>
+                    
+                    <div class="tp-caption tp-resizeme" 
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['560','700','700','550']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['130','150','120','130']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'>
+                    	<a href="{tp:cate id="41" type="url"}" class="theme-btn btn-style-one">点击了解课程</a>
+                    </div>
+                    
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Main Slider-->
+    
+    <!--About Section-->
+    <section class="about-section">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+            	<!--Content Column-->
+                <div class="content-column col-md-6 col-sm-12 col-xs-12">
+                	<div class="inner-column">
+                    	<div class="sec-title">
+                        	<h2>{tp:cate id="52" type="name"}</h2>
+                        </div>
+                        <div class="text">{tp:cate id="52" type="description"}</div>
+                        <div class="call"><a href='{tp:cate id="52" type="url"}'>点击了解更多</a></div>
+                    </div>
+                </div>
+                <!--Video Column-->
+                <div class="video-column col-md-6 col-sm-12 col-xs-12">
+                	<div class="inner-column">
+                    	
+                        <!--Video Box-->
+                        <div class="video-box">
+                            <figure class="image">
+                                <img src="__CMS__/images/video.jpg" alt="">
+                            </figure>
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!--End About Section-->
+    
+    <!--Services Section-->
+    
+    <!--End Services Section-->
+    
+    <!--Fluid Section One-->
+   
+ 	<!--End Fluid Section One-->
+    
+    <!--Doctor Section Two-->
+   
+    <!--End Doctor Section Two-->
+    
+    <!--Appointment Section-->
+    <section class="appointment-section" style="background-image:url(__CMS__/images/bg_03.jpg);">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+            	<!--Content Column-->
+            	<div class="auto-container">
+        	<div class="sec-title">
+            	<h2 style="color: #fff;">{tp:cate id="59" type="name"}</h2>
+            </div>
+            <div class="row clearfix">
+            
+            	<div class="column col-md-4 col-sm-12 col-xs-12" >
+                	<div class="sidebar-news">
+                        {tp:list name="list" id="59" limit="2" page="2"}
+                        <div class="news-block">
+                        	<div class="inner-box">
+                            	<div class="post-date">{:date('Y-m-d',$list.createtime)}</div>
+                            	<h3><a href="{$list.url}">{$list.title}</a></h3>
+                            </div>
+                        </div>
+                        {/tp:list}
+                       
+                       
+                    </div>
+                </div>
+                <div class="column col-md-8 col-sm-12 col-xs-12">
+                	<div class="row clearfix">
+                        
+                    	<!--News Block Two-->
+                        {tp:list name="list" id="59" limit="2" }
+                        <div class="news-block-two col-md-6 col-sm-6 col-xs-12">
+                            <div class="inner-box">
+                            	<div class="image">
+                                	<a href="{$list.url}"><img src="{$list.image}" alt="" /></a>
+                                </div>
+                                <div class="lower-content" >
+                                	<div class="post-date">{:date('Y-m-d',$list.createtime)}</div>
+                                    <h3><a href="{$list.url}">{$list.title}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        {/tp:list}
+                        
+                   
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+                <!--Form Column-->
+            	
+            </div>
+        </div>
+    </section>
+    <!--End Appointment Section-->
+    
+    <!--Blog Section-->
+    
+    
+    
+    <!--Main Footer-->
+    {include file="index/common/footer" /}
+    
+</div>
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+<!-- Color Palate / Color Switcher -->
+<div class="color-palate">
+    
+    
+    <div class="various-color clearfix">
+        <div class="colors-list">
+            <span class="palate default-color active" data-theme-file="css/color-themes/default-theme.css"></span>
+            <span class="palate teal-color" data-theme-file="css/color-themes/teal-theme.css"></span>
+            <span class="palate green-color" data-theme-file="css/color-themes/green-theme.css"></span>
+            <span class="palate aqua-color" data-theme-file="css/color-themes/aqua-theme.css"></span>
+            <span class="palate blue-color" data-theme-file="css/color-themes/blue-theme.css"></span>
+            <span class="palate orange-color" data-theme-file="css/color-themes/orange-theme.css"></span>
+            <span class="palate olive-color" data-theme-file="css/color-themes/olive-theme.css"></span>
+            <span class="palate red-color" data-theme-file="css/color-themes/red-theme.css"></span>
+        </div>
+    </div>
+
+    
+</div>
+<!-- /.End Of Color Palate -->
+
+<script src="__CMS__/js/jquery.js"></script> 
+<!--Revolution Slider-->
+<script src="__CMS__/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="__CMS__/js/main-slider-script.js"></script>
+
+<script src="__CMS__/js/bootstrap.min.js"></script>
+<script src="__CMS__/js/jquery.fancybox.js"></script>
+
+<script src="__CMS__/js/owl.js"></script>
+<script src="__CMS__/js/wow.js"></script>
+<script src="__CMS__/js/appear.js"></script>
+<script src="__CMS__/js/script.js"></script>
+
+<!--Google Map APi Key-->
+<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyBKS14AnP3HCIVlUpPKtGp7CbYuMtcXE2o"></script>
+<script src="__CMS__/js/map-script.js"></script>
+<!--End Google Map APi-->
+
+<!--Color Switcher-->
+<script src="__CMS__/js/color-settings.js"></script>
+</body>
+</html>
