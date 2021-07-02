@@ -244,8 +244,8 @@ class Cms extends Frontend
                 ->where($where)
                 ->count();
         //总页数                有余进1
-        $page_data['pages'] = ceil($page_data['count']/$limit);
-
+        $page_data['pages'] = intval(ceil($page_data['count']/$limit));//修复浮点问题2021-07-02 10:44:43
+       
         //一页数量
         $page_data['limit'] = $limit;
 
@@ -258,11 +258,17 @@ class Cms extends Frontend
             $page_data['list'][] = ['url'=>$this->get_page_url($cate['id'],$i) , 'num'=>$i];
         }
 
+        //第一页
+        $page_data['first_page'] = ['num'=>1,'url'=>$this->get_page_url($cate['id'] , 1)]; //2021-07-02 10:44:43
+        
         //上一页
         $page_data['prev_page'] = $page>1 ? ['num'=>$page-1,'url'=>$this->get_page_url($cate['id'] , $page-1)]: null;        
         
         //下一页
         $page_data['next_page'] = $page_data['pages']>$page ? ['num'=>$page+1,'url'=>$this->get_page_url($cate['id'] , $page+1)] : null;
+
+        //最后一页
+        $page_data['last_page'] = $page_data['pages']?['num'=>$page_data['pages'],'url'=>$this->get_page_url($cate['id'] , $page_data['pages'])] : null;//2021-07-02 10:44:43
         
         //可以自行打断查看数据 ⌚️2021-06-23 22:09:59
         // halt($page_data);
