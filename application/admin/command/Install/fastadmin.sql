@@ -44,7 +44,7 @@ CREATE TABLE `fa_admin` (
 -- Records of fa_admin
 -- ----------------------------
 BEGIN;
-INSERT INTO `fa_admin` VALUES (1, 'tpmecms', 'Admin', '374afeb5cbc286f555a667161f0c5da8', 'bc124b', '/assets/img/avatar.png', '496631085@qq.com', 0, 1624919789, '58.214.61.39', 1491635035, 1624919789, 'b37d5fee-aafe-4caa-8056-a141528a361c', 'normal');
+INSERT INTO `fa_admin` VALUES (1, 'admin', 'Admin', '', '', '/assets/img/avatar.png', 'admin@admin.com', 0, 1491635035, '127.0.0.1',1491635035, 1491635035, '', 'normal');
 COMMIT;
 
 -- ----------------------------
