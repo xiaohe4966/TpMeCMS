@@ -7,6 +7,7 @@ use app\common\model\User;
 
 /**
  * 验证接口
+ * @ApiInternal()
  */
 class Validate extends Api
 {
