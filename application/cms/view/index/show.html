@@ -2,14 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>匀熵教育-匀熵教育介绍</title>
+<title>{$site.name}-{$cate.name}</title>
 <!-- Stylesheets -->
 <link href="__CMS__/css/bootstrap.css" rel="stylesheet">
 <link href="__CMS__/css/style.css" rel="stylesheet">
 <link href="__CMS__/css/responsive.css" rel="stylesheet">
 
 <!--Color Switcher Mockup-->
-
+<link href="__CMS__/css/color-switcher-design.css" rel="stylesheet">
 
 <!--Color Themes-->
 <link id="theme-color-file" href="__CMS__/css/color-themes/default-theme.css" rel="stylesheet">
@@ -34,7 +34,7 @@
     <header class="main-header header-style-two">
     	
     	<!--Header-Upper-->
-       {include file="index/common/header_upper" /}
+        {include file="index/common/header_upper" /}
         <!--End Header Upper-->
         
         <!--Header Lower-->
@@ -44,7 +44,7 @@
     	<!--Sticky Header-->
         <div class="sticky-header">
         	<div class="auto-container clearfix">
-            {include file="index/common/logo_and_login" /}
+                {include file="index/common/logo_and_login" /}
                 
                 <!--Right Col-->
                 {include file="index/common/nav2" /}
@@ -57,7 +57,7 @@
     <!--End Main Header -->
     
     <!--Page Title-->
-    <section class="page-title" style="background-image:url(__CMS__/images/5.jpg)">
+    <section class="page-title" style="background-image:url(__CMS__/images/newskv.jpg)">
     	<div class="auto-container">
         	<div class="clearfix">
             	<div class="pull-left">
@@ -65,7 +65,7 @@
                 </div>
                 <div class="pull-right">
                     <ul class="page-breadcrumb">
-                        <li><a href="/">首页</a></li>
+                        <li><a href="{$site.index_url}">首页</a></li>
                         <li>{$cate.name}</li>
                     </ul>
                 </div>
@@ -74,38 +74,29 @@
     </section>
     <!--End Page Title-->
     
-    <!--About Clinic Section-->
-    <section class="about-clinic-section">
+    <!--Sidebar Page Container-->
+    <div class="sidebar-page-container">
     	<div class="auto-container">
         	<div class="row clearfix">
             	
-                <!--Image Column-->
-                <div class="image-column col-md-4 col-sm-12 col-xs-12">
-                	<div class="image">
-                    	<img src="{$content.image}" alt="" />
-                    </div>
+                <!--Content Side / Our Blog-->
+                <div style="text-align: center;color: #000;font-size: 25px;">{$content.title}</div>
+                <div style="text-align: center;margin-top: 10px;font-size: 16px;">{:date('Y-m-d',$content.createtime)}</div>
+                <div style="border-top: 1px solid #ccc;margin-top: 30px;"></div>
+                <div style="line-height: 25px;font-size: 16px;margin-top: 30px; padding: 0px 10px;">
+                    {$content.content} 
                 </div>
-                <!--Content Column-->
-                <div class="content-column col-md-8 col-sm-12 col-xs-12">
-                	<div class="inner-column">
-                    	<div class="sec-title">
-                        	<h2>{$content.title}</h2>
-                            <div class="text">栏目：《{$cate.name}》</div>
-                        </div>
-                        <div class="" style="font-size: 17px;margin-bottom: 50px; line-height: 30px;">
-                            {$content.content}
-                        </div>
-                        <!-- <a href="contact.html" class="theme-btn btn-style-one">联系我们</a> -->
-                    </div>
-                </div>
+                
+                <!--Sidebar Side-->
+                
                 
             </div>
         </div>
-    </section>
-  
+    </div>
+    <!--End Sidebar Page Container-->
     
     <!--Main Footer-->
-{include file="index/common/footer" /}
+    {include file="index/common/footer" /}
     
 </div>
 <!--End pagewrapper-->
@@ -131,11 +122,24 @@
     </div>
 
     
-
 </div>
 <!-- /.End Of Color Palate -->
 
-<script src="__CMS__/js/jquery.js"></script>
+<script src="__CMS__/js/jquery.js"></script> 
+<!--Revolution Slider-->
+<script src="__CMS__/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="__CMS__/js/main-slider-script.js"></script>
+
 <script src="__CMS__/js/bootstrap.min.js"></script>
 <script src="__CMS__/js/jquery.fancybox.js"></script>
 
@@ -143,6 +147,11 @@
 <script src="__CMS__/js/wow.js"></script>
 <script src="__CMS__/js/appear.js"></script>
 <script src="__CMS__/js/script.js"></script>
+
+<!-- Google Map APi Key
+<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyBKS14AnP3HCIVlUpPKtGp7CbYuMtcXE2o"></script> --> 
+<!-- <script src="__CMS__/js/map-script.js"></script> -->
+<!--End Google Map APi-->
 
 <!--Color Switcher-->
 <script src="__CMS__/js/color-settings.js"></script>

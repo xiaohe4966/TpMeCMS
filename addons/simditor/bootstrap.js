@@ -1,5 +1,4 @@
-define([], function () {
-    require.config({
+require.config({
     paths: {
         'simditor': '../addons/simditor/js/simditor.min',
     },
@@ -46,5 +45,4 @@ require(['form'], function (Form) {
             });
         }
     }
-});
 });

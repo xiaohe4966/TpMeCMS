@@ -167,6 +167,7 @@ class Index extends Cms
      */
     public function show($id=null,$cate_id=null)
     {
+        // halt($this->request->param());
         $cate = $this->get_cate_data($cate_id);
         $content = Db::table($cate['table_name'])->find($id);
         if($content){

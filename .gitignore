@@ -2,11 +2,9 @@
 # /thinkphp/
 # /vendor/
 /runtime/*
-# /addons/*
 /application/admin/command/Install/*.lock
 # /application/cms/view/*
 # /public/assets/libs/
-# /public/assets/addons/*
 /public/uploads/*
 .idea
 composer.lock
