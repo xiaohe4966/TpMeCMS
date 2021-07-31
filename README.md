@@ -1,10 +1,4 @@
-*   | AUTHOR: Xiaohe
-*   | EMAIL: 496631085@qq.com
-*   | WECHAT: he4966
-*   | DATETIME: 2021/06/25
-*   | TpMeCMS
-
-TpMeCMS是一款基于FastAdmin框架开发的，FastAdmin基于ThinkPHP5+Bootstrap开发的框架,核心代码简洁、明了，适用于微信小程序/公众号，PC网站，手机网站，App（Api接口）等集于一体的Tp框架，后台直接生成数据库的增删改查，方便二次开开发，了解thinkphp5即可上手
+TpMeCMS是一款基于FastAdmin框架开发的，FastAdmin基于ThinkPHP5+Bootstrap开发的框架。
 
 
 ## TpMeCMS由来
@@ -12,20 +6,26 @@ TpMeCMS是一款基于FastAdmin框架开发的，FastAdmin基于ThinkPHP5+Bootst
 
 ## TpMeCMS主要优点
     集成微信小程序和微信公众号功能，后台集成栏目管理等，接口可以直接拷贝app\cms\controller\Cms
-    
-## 安装使用
+
+## 安装方法1
     可以用git安装：  git clone https://gitee.com/xiaohe4966/tp-me-cms.git
     或者下载zip  https://gitee.com/xiaohe4966/tp-me-cms.git  解压到安装目录 
+    或下载完整包 https://he4966.cn/uploads/tpmecms/tpmecms1.0.zip
     修改网站运行目录为public
     PHP>=7.1 本项目是7.1运行环境
 
     没有上传fastadmin到静态资源文件 下载地址https://www.fastadmin.net/download/third.html
     然后解压到安装目录（不执行此步骤 到安装界面会提示确实资源文件）
 
+
     再运行命令  composer update   （更新安装各种包）注意php -v 的版本最好大于等于7.1
     然后就可以访问了后台地址 域名/h.php    后台地址在public/h.php 修改文件名即可
     cms首页： 域名/cms/index/index      如果访问域名打开cms 在index控制器里面的index加个跳转即可
-
+## 安装方法2
+    已上传完整资源，PHP>=7.1 本项目是7.1运行环境
+    可以用git安装：  git clone https://github.com/xiaohe4966/TpMeCMS.git
+    修改网站运行目录为public  修改伪静态
+    然后安装即可
 ## 使用流程
     安装好框架后
     只需要复制表修改表字段（只需要字段）
