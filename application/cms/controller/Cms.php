@@ -35,7 +35,7 @@ namespace app\cms\controller;
 
 use app\common\controller\Frontend;
 use think\Db;
-
+use think\Config;
 use fast\Tree;
 
 class Cms extends Frontend
@@ -97,7 +97,13 @@ class Cms extends Frontend
         foreach($nav_list as &$val){
 
             if(empty($val['outlink'])){
-                $val['url'] = '/cms/index/cate/id/'.$val['id'];
+                //加入路由开关
+                if(Config::get('site.route_switch')){
+                    $val['url'] = '/'.$val['diyname'];
+                }else{
+                    $val['url'] = '/cms/index/cate/id/'.$val['id'];
+                }
+                
             }else{
                 $val['url'] = $val['outlink'];
             }
@@ -329,14 +335,20 @@ class Cms extends Frontend
     /**
      * 获取显示页面
      *
-     * @param string $table_name 表名
+     * @param string $cate_id 栏目id
      * @param int $id 内容id
      * @return void
      */
-    public function get_show_url($table_name,$id)
+    public function get_show_url($cate_id,$id)
     {
         //也可以自己定义自己的url
-        return '/cms/index/show/cate_id/'.$table_name.'/id/'.$id;
+        if(Config::get('site.route_switch')){
+            $cate = Db::name('cate')->find($cate_id);
+            // return '/cms/index/show/cate_id/'.$cate_id.'/id/'.$id;
+            return '/'.$cate['diyname'].'_show/'.$id;
+        }else{
+            return '/cms/index/show/cate_id/'.$cate_id.'/id/'.$id;
+        }
     }
 
 
@@ -379,6 +391,13 @@ class Cms extends Frontend
      */
     public function get_page_url($cate_id,$page)
     {
-        return $this->request->domain().'/cms/index/cate/id/'.$cate_id.'/page/'.$page;
+        if(Config::get('site.route_switch')){
+            $cate = Db::name('cate')->find($cate_id);
+            // return $this->request->domain().'/cms/index/cate/id/'.$cate_id.'/page/'.$page;
+            return $this->request->domain().'/'.$cate['diyname'].'/page/'.$page;
+        }else{
+            return $this->request->domain().'/cms/index/cate/id/'.$cate_id.'/page/'.$page;
+        }
+        
     }
 }

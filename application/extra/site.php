@@ -50,4 +50,5 @@ return array (
   'email' => '496631085@qq.com',
   'banquan' => 'TpMeCms © 2021 版权所有',
   'technical_support' => '技术支持：TpMeCMS',
+  'route_switch' => '1',
 );

@@ -1,4 +1,4 @@
-TpMeCMS是一款基于FastAdmin框架开发的，FastAdmin基于ThinkPHP5+Bootstrap开发的框架。
+TpMeCMS是一款基于FastAdmin框架（version:1.2.0.20210401_beta）开发的，FastAdmin基于ThinkPHP5+Bootstrap开发的框架。
 
 
 ## TpMeCMS由来
@@ -157,6 +157,16 @@ https://he4966.cn/index/product/10.html?cate=9
 ![栏目管理](https://he4966.cn/uploads/temecms/3.png "栏目管理")
 ![栏目添加](https://he4966.cn/uploads/temecms/4.png "栏目添加")
 ![栏目添加选择模板](https://he4966.cn/uploads/temecms/6.png "栏目添加选择模板")
+
+
+
+## 版本更新日志
+    2021-07-31 cms加入路由
+
+
+
+## 代码说明
+    自定义路由：application/route.php 和 application/cms/controller/Cms.php 里自行修改
 
 
 ## 问题反馈

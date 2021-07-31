@@ -485,6 +485,7 @@ INSERT INTO `fa_config` VALUES (28, 'addr2', 'basic', '联系地址2', '联系�
 INSERT INTO `fa_config` VALUES (29, 'email', 'basic', '邮箱', '邮箱地址', 'string', '496631085@qq.com', '', 'email', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
 INSERT INTO `fa_config` VALUES (30, 'banquan', 'basic', '版权', '底部版权信息', 'string', 'TpMeCms © 2021 版权所有', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
 INSERT INTO `fa_config` VALUES (31, 'technical_support', 'basic', '技术支持', '技术支持', 'string', '技术支持：TpMeCMS', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (32, 'route_switch', 'basic', '自定义路由开关', '开启后使用的(栏目管理>自定义名称)', 'switch', '1', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
 COMMIT;
 
 -- ----------------------------
