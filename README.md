@@ -62,7 +62,7 @@ http://tpmecms.he4966.cn/cms/index/index
 
 ## 配置
     微信配置在  后台常规管理->系统配置->微信->设置小程序公众号等资料
-![设置图](https://he4966.cn/uploads/temecms/1.png "设置图")
+![设置图](https://he4966.cn/uploads/tpmecms/1.png "设置图")
     调试模式开启application/config.php  
     // 应用调试模式
     'app_debug' => Env::get('app.debug', 1),    //或者在根目录.env里面更改(没有此文件请忽略)
@@ -71,7 +71,7 @@ http://tpmecms.he4966.cn/cms/index/index
 
 ## 使用标签
     网站里面需要添加字段，在后台 常规管理->系统配置->点击+  前段使用{$site.字段名}
-![设置字段图](https://he4966.cn/uploads/temecms/2.png "设置字段图")
+![设置字段图](https://he4966.cn/uploads/tpmecms/2.png "设置字段图")
     
 
     获取栏目名
@@ -162,10 +162,10 @@ http://tpmecms.he4966.cn/cms/index/index
 
 ## 界面截图
 https://he4966.cn/index/product/10.html?cate=9
-![栏目管理](https://he4966.cn/uploads/temecms/3.png "栏目管理")
-![栏目添加](https://he4966.cn/uploads/temecms/4.png "栏目添加")
-![栏目添加选择模板](https://he4966.cn/uploads/temecms/6.png "栏目添加选择模板")
-![附近插件](https://he4966.cn/uploads/temecms/redisgeo.png "附近插件")
+![栏目管理](https://he4966.cn/uploads/tpmecms/3.png "栏目管理")
+![栏目添加](https://he4966.cn/uploads/tpmecms/4.png "栏目添加")
+![栏目添加选择模板](https://he4966.cn/uploads/tpmecms/6.png "栏目添加选择模板")
+![附近插件](https://he4966.cn/uploads/tpmecms/redisgeo.png "附近插件")
 
 
 ## 版本更新日志
