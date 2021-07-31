@@ -2,7 +2,11 @@
 
 return [
     'autoload' => false,
-    'hooks' => [],
+    'hooks' => [
+        'testhook' => [
+            'redisgeo',
+        ],
+    ],
     'route' => [],
     'priority' => [],
 ];
