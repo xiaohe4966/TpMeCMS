@@ -7,25 +7,33 @@ TpMeCMS是一款基于FastAdmin框架（version:1.2.0.20210401_beta）开发的�
 ## TpMeCMS主要优点
     集成微信小程序和微信公众号功能，后台集成栏目管理等，接口可以直接拷贝app\cms\controller\Cms
 
-## 安装方法1
-    可以用git安装：  git clone https://gitee.com/xiaohe4966/tp-me-cms.git
-    或者下载zip  https://gitee.com/xiaohe4966/tp-me-cms.git  解压到安装目录 
-    或下载完整包 https://he4966.cn/uploads/tpmecms/tpmecms1.0.zip
-    修改网站运行目录为public
+## 环境要求
     PHP>=7.1 本项目是7.1运行环境
 
-    没有上传fastadmin到静态资源文件 下载地址https://www.fastadmin.net/download/third.html
-    然后解压到安装目录（不执行此步骤 到安装界面会提示确实资源文件）
+## 下载方法
+    可以用git安装：  
+    git clone https://gitee.com/xiaohe4966/tp-me-cms.git
+    或：
+    git clone https://github.com/xiaohe4966/TpMeCMS.git
+    或直接下载zip完整包
+    https://he4966.cn/uploads/tpmecms/tpmecms.zip   解压到安装目录
 
+    没有剪辑安装的视频：https://www.bilibili.com/video/BV1B54y1J7yW/
+## 安装方法
+     
+    修改网站运行目录为public
+    修改伪静态！！！修改伪静态！！修改伪静态！
 
-    再运行命令  composer update   （更新安装各种包）注意php -v 的版本最好大于等于7.1
-    然后就可以访问了后台地址 域名/h.php    后台地址在public/h.php 修改文件名即可
-    cms首页： 域名/cms/index/index      如果访问域名打开cms 在index控制器里面的index加个跳转即可
-## 安装方法2
-    已上传完整资源，PHP>=7.1 本项目是7.1运行环境
-    可以用git安装：  git clone https://github.com/xiaohe4966/TpMeCMS.git
-    修改网站运行目录为public  修改伪静态
-    然后安装即可
+            （可以跳过该步骤）如果 php 版本非7.1可运行命令  composer update   （更新安装各种包）注意php -v 的版本最好大于等于7.1
+
+    然后安装即可  
+          
+    安装完成，就可以访问了后台地址 域名/h.php
+    后台地址在public/h.php 可以自行修改文件名即可    
+    cms首页： 打开域名会跳转到/cms/index/index，如果不需要可以自行注释跳转 application/index/controller/Index.php
+     
+
+  
 ## 使用流程
     安装好框架后
     只需要复制表修改表字段（只需要字段）
@@ -157,16 +165,18 @@ https://he4966.cn/index/product/10.html?cate=9
 ![栏目管理](https://he4966.cn/uploads/temecms/3.png "栏目管理")
 ![栏目添加](https://he4966.cn/uploads/temecms/4.png "栏目添加")
 ![栏目添加选择模板](https://he4966.cn/uploads/temecms/6.png "栏目添加选择模板")
-
+![附近插件](https://he4966.cn/uploads/temecms/redisgeo.png "附近插件")
 
 
 ## 版本更新日志
     2021-07-31 cms加入路由
+                加入附近插件（基于 redis geo）
 
 
 
 ## 代码说明
     自定义路由：application/route.php 和 application/cms/controller/Cms.php 里自行修改
+    附近插件：  addons/redisgeo 可以自行添加修改配置文件也在里面
 
 
 ## 问题反馈
