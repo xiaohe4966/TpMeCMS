@@ -221,20 +221,142 @@ class Tpmecms extends Tpmecmscom
 
 
 
-    /**公共方法  start
-     *  ┏┻━━━━━━━━━┻┓
-     *  ┃           ┃
-     *  ┃ ┗┳     ┳┛ ┃
-     *  ┃     ┻     ┃
-     *  ┗━━━┓　┏━━━━┛
-     *      ┃　┃
-     *      ┃　┃
-     *      ┃　┗━━━━━━━━━━┓
-     *      ┃     He      ┣┓
-     *      ┃　          ┏┛
-     *      ┗━┓  ┏━━━┓  ┏┛
-     *        ┗━━┛   ┗━━┛
+                                                        /**公共方法  start
+                                                         *  ┏┻━━━━━━━━━┻┓
+                                                         *  ┃           ┃
+                                                         *  ┃ ┗┳     ┳┛ ┃
+                                                         *  ┃     ┻     ┃
+                                                         *  ┗━━━┓　┏━━━━┛
+                                                         *      ┃　┃
+                                                         *      ┃　┃
+                                                         *      ┃　┗━━━━━━━━━━┓
+                                                         *      ┃     He      ┣┓
+                                                         *      ┃　          ┏┛
+                                                         *      ┗━┓  ┏━━━┓  ┏┛
+                                                         *        ┗━━┛   ┗━━┛
+                                                         */
+
+
+
+
+
+
+
+    //  _____       __  __         ____ __  __ ____  
+    // |_   __ __  |  \/  | ___   / ___|  \/  / ___|     | AUTHOR: Xiaohe
+    //   | || '_ \ | |\/| |/ _ \ | |   | |\/| \___ \     | EMAIL: 496631085@qq.com
+    //   | || |_)| | |  | |  __/ | |___| |  | |___) |    | PS: 钱的操作及日志
+    //   |_|| .__/ |_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2021/08/5
+    //      |_|                                          | TpMeCMS
+
+    /**
+     * 减用户的余额钱💰
+     *
+     * @param int $uid 用户id
+     * @param int $money 钱
+     * @param string $ps 备注
+     * @return void
      */
+    protected function DecUserMoney($uid,$money,$ps=null)
+    {
+        $user = Db::name('user')->find($uid);
+        $data['before'] = $user['money'];//变更前余额
+        
+        Db::name('user')->where('id',$uid)->setDec('money',$money);//减去用户余额
+        
+        $user = Db::name('user')->find($uid);
+        $data['after'] = $user['money'];//变更后余额
+        $data['user_id'] = $uid;
+        $data['money'] = $money;
+        $data['memo'] = $ps;
+        $data['createtime'] = time();
+        Db::name('user_money_log')->insert($data);//写入用户money日志
+        
+    }
+
+    /**
+     * 加用户的余额钱💰
+     *
+     * @param int $uid 用户id
+     * @param int $money 钱
+     * @param string $ps 备注
+     * @return void
+     */
+    protected function IncUserMoney($uid,$money,$ps=null)
+    {
+        $user = Db::name('user')->find($uid);
+        $data['before'] = $user['money'];//变更前余额
+        
+        Db::name('user')->where('id',$uid)->setInc('money',$money);//减去用户余额
+        
+        $user = Db::name('user')->find($uid);
+        $data['after'] = $user['money'];//变更后余额
+        $data['user_id'] = $uid;
+        $data['money'] = $money;
+        $data['memo'] = $ps;
+        $data['createtime'] = time();
+        Db::name('user_money_log')->insert($data);//写入用户money日志
+        
+    }
+
+    //  _____       __  __         ____ __  __ ____  
+    // |_   __ __  |  \/  | ___   / ___|  \/  / ___|     | AUTHOR: Xiaohe
+    //   | || '_ \ | |\/| |/ _ \ | |   | |\/| \___ \     | EMAIL: 496631085@qq.com
+    //   | || |_)| | |  | |  __/ | |___| |  | |___) |    | PS: 积分的操作及日志
+    //   |_|| .__/ |_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2021/08/5
+    //      |_|                                          | TpMeCMS
+
+    /**
+     * 减用户的积分💎
+     *
+     * @param int $uid 用户id
+     * @param int $score 积分
+     * @param string $ps 备注
+     * @return void
+     */
+    protected function DecUserScore($uid,$score,$ps=null)
+    {
+        $user = Db::name('user')->find($uid);
+        $data['before'] = $user['score'];//变更前积分
+        
+        Db::name('user')->where('id',$uid)->setDec('score',$score);//减去用户积分
+        
+        $user = Db::name('user')->find($uid);
+        $data['after'] = $user['score'];//变更后积分
+        $data['user_id'] = $uid;
+        $data['score'] = $score;
+        $data['memo'] = $ps;
+        $data['createtime'] = time();
+        Db::name('user_score_log')->insert($data);//写入用户score日志
+        
+    }
+
+    /**
+     * 加用户的积分💎
+     *
+     * @param int $uid 用户id
+     * @param int $score 积分
+     * @param string $ps 备注
+     * @return void
+     */
+    protected function IncUserScore($uid,$score,$ps=null)
+    {
+        $user = Db::name('user')->find($uid);
+        $data['before'] = $user['score'];//变更前积分
+        
+        Db::name('user')->where('id',$uid)->setInc('score',$score);//减去用户积分
+        
+        $user = Db::name('user')->find($uid);
+        $data['after'] = $user['score'];//变更后积分
+        $data['user_id'] = $uid;
+        $data['score'] = $score;
+        $data['memo'] = $ps;
+        $data['createtime'] = time();
+        Db::name('user_score_log')->insert($data);//写入用户score日志
+        
+    }
+
+
 
 
     /**
