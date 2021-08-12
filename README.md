@@ -25,6 +25,9 @@ TpMeCMS是一款基于FastAdmin框架（version:1.2.0.20210401_beta）开发的�
     修改伪静态！！！修改伪静态！！修改伪静态！
 
             （可以跳过该步骤）如果 php 版本非7.1可运行命令  composer update   （更新安装各种包）注意php -v 的版本最好大于等于7.1
+            
+    !!!git克隆的暂时先用导入数据库tpmecmsSQL_Account_admin_Password_123456.sql然后修改数据库配置
+    文件在application/database.php里面修改   //或者在根目录.env里面更改(没有此文件请忽略)
 
     然后安装即可  
           
