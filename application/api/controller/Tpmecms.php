@@ -51,6 +51,7 @@ use fast\Random;
 
 /**
  * 继承Tpmecmscom
+ * @ApiInternal()
  */
 class Tpmecms extends Tpmecmscom
 {
@@ -512,6 +513,7 @@ class Tpmecms extends Tpmecmscom
 
     /**
      * 计算坐标距离
+     * @ApiInternal()
      * @param $lng1 经度1
      * @param $lat1 纬度1
      * @param $lng2 经度2
