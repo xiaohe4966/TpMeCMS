@@ -550,12 +550,12 @@ class User extends Cms
         $Xiaohe->update_user_data($user,Session::get('sharer'));
         $user_data = $Xiaohe->openid_get_user($user['openid']);
         
-         
+        
         $ret = $this->auth->direct($user_data['id']);
         $id = $this->auth->id;//getUserinfo();
         // halt($token);
         Session::set('id',$id);
-
+        
         return $user;
     }
 
@@ -592,7 +592,7 @@ class User extends Cms
             Session::set('re_url',null);
             header("Location: ".$this->request->domain().$re_url);
         }else{
-            header("Location: ".$this->request->domain()."/cms/user/bind_student");
+            header("Location: ".$this->request->domain()."/cms/user/index");
         }
 
     }
@@ -641,7 +641,7 @@ class User extends Cms
             $this->success('请绑定注册手机','/cms/user/register');
             
         }else{
-            $this->error('请关注公众号'.$data['errmsg'],'/cms/user/bind');
+            $this->error('模版消息发送失败，或配置错误或未关注公众号'.$data['errmsg'],'/cms/user/bind',-1,16);
         }
     }
 
