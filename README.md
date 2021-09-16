@@ -174,7 +174,8 @@ https://he4966.cn/index/product/10.html?cate=9
 ## 版本更新日志
     2021-07-31 cms加入路由
                 加入附近插件（基于 redis geo）
-
+    2021-09-16 api加入微信公众号消息接口
+                用户通过公众号发送消息内容互动(文字,定位,图片,视频...先去微信公众号配置好接口信息：网站/api/wechatofficial/message )（文件Wechatofficial.php）
 
 
 ## 代码说明
