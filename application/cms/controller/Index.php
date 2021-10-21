@@ -176,6 +176,33 @@ class Index extends Cms
         }else{
             $this->error('暂无此内容');
         }
+
+
+        //上一页 
+        $prev = Db::table($cate['table_name'])
+                ->where('deletetime',null)//不需要回收站的可以注释
+                ->where('id','>',$id)
+                ->order('id asc')
+                ->limit(1)
+                ->find();
+        if($prev){
+            $prev['url'] = $this->get_show_url($cate_id,$prev['id']);//页面地址
+        }
+        $content['prev'] = $prev;
+        
+        //下一页
+        $next = Db::table($cate['table_name'])
+                ->where('deletetime',null)
+                ->where('id','<',$id)
+                ->order('id desc')
+                ->limit(1)
+                ->find();
+        if($next){
+            $next['url'] = $this->get_show_url($cate_id,$next['id']);//页面地址
+        }
+        $content['next'] = $next;
+
+
         $this->view->assign('content', $content);//内容信息
         $this->view->assign('cate', $cate);//栏目信息
         return $this->view->fetch($cate['showtpl']);

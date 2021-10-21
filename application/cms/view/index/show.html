@@ -23,6 +23,24 @@
 <!--[if lt IE 9]><script src="__CMS__/js/respond.js"></script><![endif]-->
 </head>
 
+<style>
+
+.fot{
+		width: 100%;
+		padding: 35px 0;
+		box-sizing: border-box;
+		display: flex;
+	}
+	.fot_left{
+		width: 50%;
+		color: #232323;
+		font-size: 14px;
+	}
+	.fot_next{
+		text-align: right;
+	}
+</style>
+
 <body>
 
 <div class="page-wrapper">
@@ -90,10 +108,24 @@
                 <!--Sidebar Side-->
                 
                 
+
+                <div class="fot">
+                    <div class="fot_left">
+                        {if $content.prev}<ul class="fot_prv com_url" data-url="{$content.prev.url}">上一篇：{$content.prev.title}</ul>{/if}
+                    </div>
+                    <div class="fot_left">
+                        {if $content.next}<ul class="fot_next com_url" data-url="{$content.next.url}">下一篇：{$content.next.title}</ul>{/if}
+                    </div>
+                </div>
+
             </div>
         </div>
+
+
+       
     </div>
     <!--End Sidebar Page Container-->
+  
     
     <!--Main Footer-->
     {include file="index/common/footer" /}
@@ -155,5 +187,12 @@
 
 <!--Color Switcher-->
 <script src="__CMS__/js/color-settings.js"></script>
+
+<script>
+	$('.com_url').on('click',function(e){
+    	var url = $(this).attr('data-url');
+    	location.href = url;
+    });
+</script>
 </body>
 </html>

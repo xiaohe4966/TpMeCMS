@@ -132,6 +132,20 @@ http://tpmecms.he4966.cn/cms/index/index
     {if $page['next_page']}<li><a href="{$page.next_page.url}"><span class="fa fa-angle-right"></span></a></li>{/if}
 
 
+    详情页面
+    上一篇:
+    {if $content.prev}<ul class="fot_prv com_url" data-url="{$content.prev.url}">上一篇：{$content.prev.title}</ul>{/if}
+	下一篇：
+    {if $content.next}<ul class="fot_next com_url" data-url="{$content.next.url}">下一篇：{$content.next.title}</ul>{/if}
+    不放a标签点击跳转页面（确定✅页面里有引用过jquery）
+    <script>
+        $('.com_url').on('click',function(e){
+            var url = $(this).attr('data-url');
+            location.href = url;
+        });
+    </script>
+
+
 
 
 ## 通用特性
@@ -176,7 +190,7 @@ https://he4966.cn/index/product/10.html?cate=9
                 加入附近插件（基于 redis geo）
     2021-09-16 api加入微信公众号消息接口
                 用户通过公众号发送消息内容互动(文字,定位,图片,视频...先去微信公众号配置好接口信息：网站/api/wechatofficial/message )（文件Wechatofficial.php）
-
+    2021-10-21 详情页面加入上一篇，下一篇 
 
 ## 代码说明
     自定义路由：application/route.php 和 application/cms/controller/Cms.php 里自行修改
