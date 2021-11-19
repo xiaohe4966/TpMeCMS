@@ -1,5 +1,6 @@
 TpMeCMS是一款基于FastAdmin框架（version:1.2.0.20210401_beta）开发的，FastAdmin基于ThinkPHP5+Bootstrap开发的框架。
 
+## 已开发插件版本地址：https://gitee.com/xiaohe4966/tp-me-cms-addons
 
 ## TpMeCMS由来
     用过FastAdmin的插件cms，SIYUCMS，行云海CMS等，功能功能各有优点缺点，发现自己的项目经常使用（微信小程序/公众号，PC网站，手机网站，App（Api接口）等），结合还需要二次开发，才能使用，于是就使用自己熟悉等thinkphp5，FastAdmin来开发自己的cms框架
@@ -61,6 +62,8 @@ TpMeCMS是一款基于FastAdmin框架（version:1.2.0.20210401_beta）开发的�
 ## 在线演示
 
 http://tpmecms.he4966.cn/cms/index/index
+微信公众号直接登陆
+http://tpmecms.he4966.cn/cms/user/wx_login
 
 
 ## 配置
@@ -191,11 +194,12 @@ https://he4966.cn/index/product/10.html?cate=9
     2021-09-16 api加入微信公众号消息接口
                 用户通过公众号发送消息内容互动(文字,定位,图片,视频...先去微信公众号配置好接口信息：网站/api/wechatofficial/message )（文件Wechatofficial.php）
     2021-10-21 详情页面加入上一篇，下一篇 
+    2021-11-19 加入微信公众号授权登陆 `http://tpmecms.he4966.cn/cms/user/wx_login`
+
 
 ## 代码说明
     自定义路由：application/route.php 和 application/cms/controller/Cms.php 里自行修改
     附近插件：  addons/redisgeo 可以自行添加修改配置文件也在里面
-
 
 ## 问题反馈
 

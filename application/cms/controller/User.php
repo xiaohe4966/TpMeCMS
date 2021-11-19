@@ -540,9 +540,10 @@ class User extends Cms
             
             // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
             $oauth->redirect()->send();
-            // halt(4);
+            exit();
         }
-            
+        
+        //上面是没有缓存信息，就进入授权  下面是有缓存执行的下面其实可以不用写
         $user = Session::get('wechat_user');
 
         $Xiaohe = new Com;
@@ -559,12 +560,27 @@ class User extends Cms
         return $user;
     }
 
+    /**
+     * 微信登陆
+     *
+     * @param string $url 登陆后跳转地址
+     * @return void
+     */
+    public function wx_login($url='/cms/index/index')
+    {
+        $this->get_user($url);//如果没有授权就跳这个地址
+
+        //如果有缓存后就跳转这个地址（get_user 里有缓存没写跳转）
+        $this->redirect($url);
+        exit();
+    }
+
 
 
 
 
     /* 
-    * @Description: 公众号获取code
+    * @Description: 公众号获取code并存储或更新用户信息
     * @return: 
     */   
     public function code()
@@ -573,23 +589,24 @@ class User extends Cms
         $oauth = $app->oauth;
        
         $user = $oauth->user();
+        $wechat_user = $user->original;
+         // halt($user->original);//可以自己打印看下
 
-        Session::set('wechat_user',$user->original);//获取到用户信息 自己可以存储
-        // halt($user->original);//可以自己打印看下
-
-        // $user = Session::get('wechat_user');
+        Session::set('wechat_user',$wechat_user);//获取到用户信息 自己可以存储
 
         $Xiaohe = new Com;
-        // halt($user);
-        $Xiaohe->update_user_data($user,Session::get('sharer'));
-        $user_data = $Xiaohe->openid_get_user($user['openid']);
+        $Xiaohe->update_user_data($wechat_user,Session::get('sharer'));//更新或插入新微信用户
 
+        $user_data = $Xiaohe->openid_get_user($wechat_user['openid']);//用微信openid获取用户信息
 
+        if($user_data){
+            $ret = $this->auth->direct($user_data['id']);//直接登陆该账号
+        }
         
         //授权后挑战到那个地址
         $re_url = Session::get('re_url');
         if($re_url){
-            Session::set('re_url',null);
+            Session::set('re_url',null);//清空跳转网址
             header("Location: ".$this->request->domain().$re_url);
         }else{
             header("Location: ".$this->request->domain()."/cms/user/index");
