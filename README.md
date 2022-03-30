@@ -12,14 +12,16 @@ TpMeCMS是一款基于FastAdmin框架（version:V1.3.3.20220121）开发的，Fa
     PHP>=7.1 本项目是7.1运行环境
 
 ## 下载方法
+    下载默认直接:
+    `git clone https://gitee.com/xiaohe4966/TpMeCMS.git`
+
     下载某个分支:
     `git clone -b 分支名 网址.git`
     可以用git安装：  
     `git clone -b v1.3.3.2 https://gitee.com/xiaohe4966/tp-me-cms.git`
     或：
     `git clone -b v1.3.3.2 https://github.com/xiaohe4966/TpMeCMS.git`
-    下载主分支直接:
-    `git clone https://gitee.com/xiaohe4966/TpMeCMS.git`
+    
     或直接下载zip完整包
     https://he4966.cn/uploads/tpmecms/tpmecms.zip   解压到安装目录
 
@@ -102,7 +104,7 @@ http://tpmecms.he4966.cn/cms/user/wx_login
 
 
     循环多级栏目 及 当前栏目高亮
-    ```
+    ```html
        {volist name="nav" id="v"}                            
             {if $v.childlist}
             <li class="dropdown {if $cate['id'] eq $v['id']  OR $cate['is_top'] eq $v['id']}current{/if}   "><a href="{$v.url}">{$v.name}</a>                                
@@ -131,7 +133,8 @@ http://tpmecms.he4966.cn/cms/user/wx_login
     ```
     列表页分页示例
         <!-- 上一页 -->
-    ```{if $page['prev_page']}<li><a href="{$page.prev_page.url}"><span class="fa fa-angle-left"></span></a></li>{/if}
+    ```html
+    {if $page['prev_page']}<li><a href="{$page.prev_page.url}"><span class="fa fa-angle-left"></span></a></li>{/if}
     
     {volist name="$page['list']" id="v"}
     <li><a href="{$v.url}" {if $page['page'] eq $v['num']}class="active"{/if}>{$v.num}</a></li>
@@ -147,7 +150,7 @@ http://tpmecms.he4966.cn/cms/user/wx_login
 	下一篇：
     `{if $content.next}<ul class="fot_next com_url" data-url="{$content.next.url}">下一篇：{$content.next.title}</ul>{/if}`
     不放a标签点击跳转页面（确定✅页面里有引用过jquery）
-    ```
+    ```js
     <script>
         $('.com_url').on('click',function(e){
             var url = $(this).attr('data-url');
