@@ -134,7 +134,7 @@ class Cate extends Backend
                 $params = $this->preExcludeFields($params);
                 //加入判断上级id不能等于自己id(否则死循环)
                 if($ids==$params['parent_id'])
-                    $ths->error('上级ID和自己栏目不能一样');
+                    $this->error('上级ID和自己栏目不能一样');
                 $result = false;
                 Db::startTrans();
                 try {
