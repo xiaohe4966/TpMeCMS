@@ -407,7 +407,6 @@ class Auth extends \fast\Auth
         $userRule = $this->getRuleList();
         $selected = $referer = [];
         $refererUrl = Session::get('referer');
-        $pinyin = new \Overtrue\Pinyin\Pinyin('Overtrue\Pinyin\MemoryFileDictLoader');
         // 必须将结果集转换为数组
         $ruleList = collection(\app\admin\model\AuthRule::where('status', 'normal')
             ->where('ismenu', 1)
@@ -418,9 +417,7 @@ class Auth extends \fast\Auth
             ->where('ismenu', 0)
             ->where('name', 'like', '%/index')
             ->column('name,pid');
-        $pidArr = array_filter(array_unique(array_map(function ($item) {
-            return $item['pid'];
-        }, $ruleList)));
+        $pidArr = array_unique(array_filter(array_column($ruleList, 'pid')));
         foreach ($ruleList as $k => &$v) {
             if (!in_array($v['name'], $userRule)) {
                 unset($ruleList[$k]);
@@ -434,8 +431,6 @@ class Auth extends \fast\Auth
             $v['icon'] = $v['icon'] . ' fa-fw';
             $v['url'] = isset($v['url']) && $v['url'] ? $v['url'] : '/' . $module . '/' . $v['name'];
             $v['badge'] = isset($badgeList[$v['name']]) ? $badgeList[$v['name']] : '';
-            $v['py'] = $pinyin->abbr($v['title'], '');
-            $v['pinyin'] = $pinyin->permalink($v['title'], '');
             $v['title'] = __($v['title']);
             $v['url'] = preg_match("/^((?:[a-z]+:)?\/\/|data:image\/)(.*)/i", $v['url']) ? $v['url'] : url($v['url']);
             $v['menuclass'] = in_array($v['menutype'], ['dialog', 'ajax']) ? 'btn-' . $v['menutype'] : '';
@@ -443,11 +438,10 @@ class Auth extends \fast\Auth
             $selected = $v['name'] == $fixedPage ? $v : $selected;
             $referer = $v['url'] == $refererUrl ? $v : $referer;
         }
-        $lastArr = array_diff($pidArr, array_filter(array_unique(array_map(function ($item) {
-            return $item['pid'];
-        }, $ruleList))));
+        $lastArr = array_unique(array_filter(array_column($ruleList, 'pid')));
+        $pidDiffArr = array_diff($pidArr, $lastArr);
         foreach ($ruleList as $index => $item) {
-            if (in_array($item['id'], $lastArr)) {
+            if (in_array($item['id'], $pidDiffArr)) {
                 unset($ruleList[$index]);
             }
         }
@@ -455,8 +449,9 @@ class Auth extends \fast\Auth
             $referer = [];
         }
 
-        $select_id = $selected ? $selected['id'] : 0;
+        $select_id = $referer ? $referer['id'] : ($selected ? $selected['id'] : 0);
         $menu = $nav = '';
+        $showSubmenu = config('fastadmin.show_submenu');
         if (Config::get('fastadmin.multiplenav')) {
             $topList = [];
             foreach ($ruleList as $index => $item) {
@@ -473,11 +468,11 @@ class Auth extends \fast\Auth
             foreach ($topList as $index => $item) {
                 $childList = Tree::instance()->getTreeMenu(
                     $item['id'],
-                    '<li class="@class" pid="@pid"><a @extend href="@url@addtabs" addtabs="@id" class="@menuclass" url="@url" py="@py" pinyin="@pinyin" title="@title"><i class="@icon"></i> <span>@title</span> <span class="pull-right-container">@caret @badge</span></a> @childlist</li>',
+                    '<li class="@class" pid="@pid"><a @extend href="@url@addtabs" addtabs="@id" class="@menuclass" url="@url" py="@py" pinyin="@pinyin"><i class="@icon"></i> <span>@title</span> <span class="pull-right-container">@caret @badge</span></a> @childlist</li>',
                     $select_id,
                     '',
                     'ul',
-                    'class="treeview-menu"'
+                    'class="treeview-menu' . ($showSubmenu ? ' menu-open' : '') . '"'
                 );
                 $current = in_array($item['id'], $selectParentIds);
                 $url = $childList ? 'javascript:;' : $item['url'];
@@ -495,11 +490,11 @@ class Auth extends \fast\Auth
             Tree::instance()->init($ruleList);
             $menu = Tree::instance()->getTreeMenu(
                 0,
-                '<li class="@class"><a @extend href="@url@addtabs" @menutabs class="@menuclass" url="@url" py="@py" pinyin="@pinyin" title="@title"><i class="@icon"></i> <span>@title</span> <span class="pull-right-container">@caret @badge</span></a> @childlist</li>',
+                '<li class="@class"><a @extend href="@url@addtabs" @menutabs class="@menuclass" url="@url" py="@py" pinyin="@pinyin"><i class="@icon"></i> <span>@title</span> <span class="pull-right-container">@caret @badge</span></a> @childlist</li>',
                 $select_id,
                 '',
                 'ul',
-                'class="treeview-menu"'
+                'class="treeview-menu' . ($showSubmenu ? ' menu-open' : '') . '"'
             );
             if ($selected) {
                 $nav .= '<li role="presentation" id="tab_' . $selected['id'] . '" class="' . ($referer ? '' : 'active') . '"><a href="#con_' . $selected['id'] . '" node-id="' . $selected['id'] . '" aria-controls="' . $selected['id'] . '" role="tab" data-toggle="tab"><i class="' . $selected['icon'] . ' fa-fw"></i> <span>' . $selected['title'] . '</span> </a></li>';

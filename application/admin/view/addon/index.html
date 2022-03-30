@@ -61,6 +61,7 @@
     .btn-toggle {
         padding: 0;
     }
+
 </style>
 <div class="panel panel-default panel-intro">
     <div class="panel-heading">
@@ -81,7 +82,7 @@
                         <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" data-force-refresh="false"><i class="fa fa-refresh"></i> </a>
                         {if $Think.config.fastadmin.api_url}
                         <button type="button" id="faupload-addon" class="btn btn-danger faupload btn-mini-xs" data-url="addon/local" data-chunking="false" data-mimetype="zip,fastaddon" data-multiple="false"><i class="fa fa-upload"></i>
-                            {:__('Offline install')}
+                            {:__('Local install')}
                         </button>
                         <div class="btn-group">
                             <a href="#" class="btn btn-info btn-switch active btn-mini-xs" data-type="all"><i class="fa fa-list"></i> {:__('All')}</a>
@@ -185,34 +186,22 @@
     <div>
         <form class="form-horizontal form-userinfo">
             <fieldset>
-                <div class="alert alert-dismissable alert-success">
+                <div class="alert alert-dismissable alert-info-light">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     <strong>{:__('Warning')}</strong><br/>{:__('Logined tips', '<%=username%>')}
                 </div>
             </fieldset>
-            <div class="breadcrumb"><a href="https://www.fastadmin.net/user/myaddon.html" target="_blank"><i class="fa fa-money"></i> {:__('My addons')}</a></div>
+            <div class="breadcrumb"><a href="https://www.fastadmin.net/user/myaddon.html" target="_blank"><i class="fa fa-cube"></i> {:__('My addons')}</a></div>
         </form>
-    </div>
-</script>
-<script id="paytpl" type="text/html">
-    <div class="payimg" style="background:url('<%=payimg%>') 0 0 no-repeat;background-size:cover;">
-        <%if(paycode){%>
-        <div class="alipaycode">
-            <%=paycode%>
-        </div>
-        <div class="wechatcode">
-            <%=paycode%>
-        </div>
-        <%}%>
     </div>
 </script>
 <script id="uninstalltpl" type="text/html">
     <div class="">
         <div class=""><%=#__("Are you sure you want to unstall %s?", addon['title'])%>
             <p class="text-danger">{:__('Delete all the addon file and cannot be recovered!')} </p>
-            {if config('app_debug')}
+                      {if config('app_debug')}
             <p class="text-danger"><input type="checkbox" name="droptables" id="droptables" data-name="<%=addon['name']%>"/> {:__('Delete all the addon database and cannot be recovered!')} </p>
-            {/if}
+                      {/if}
             <p class="text-danger">{:__('Please backup important data manually before uninstall!')}</p>
         </div>
     </div>
@@ -245,7 +234,7 @@
     <% var label = labelarr[item.id % 5]; %>
     <% var addon = item.addon; %>
 
-    <div class="operate" data-id="<%=item.id%>" data-name="<%=item.name%>">
+    <span class="operate" data-id="<%=item.id%>" data-name="<%=item.name%>">
         <% if(!addon){ %>
             <% if(typeof item.releaselist !="undefined" && item.releaselist.length>1){%>
                 <span class="btn-group">
@@ -309,6 +298,6 @@
             <a href="javascript:;" class="btn btn-xs btn-danger btn-uninstall" title="{:__('Uninstall')}"><i class="fa fa-times"></i>
                 {:__('Uninstall')}</a>
         <% } %>
-    </div>
+    </span>
 </script>
 <!--@formatter:on-->

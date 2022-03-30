@@ -77,11 +77,11 @@
 			parent.bind.call(this);
 			this._data.realcheckboxes.uto = false;
 			this.element
-				.on('changed.jstree uncheck_node.jstree check_node.jstree uncheck_all.jstree check_all.jstree move_node.jstree copy_node.jstree redraw.jstree open_node.jstree ready.jstree loaded.jstree', $.proxy(function () {
+				.on('changed.jstree uncheck_node.jstree check_node.jstree uncheck_all.jstree check_all.jstree move_node.jstree copy_node.jstree redraw.jstree open_node.jstree ready.jstree loaded.jstree', function () {
 						// only if undetermined is in setting
 						if(this._data.realcheckboxes.uto) { clearTimeout(this._data.realcheckboxes.uto); }
-						this._data.realcheckboxes.uto = setTimeout($.proxy(this._realcheckboxes, this), 50);
-					}, this));
+						this._data.realcheckboxes.uto = setTimeout(this._realcheckboxes.bind(this), 50);
+					}.bind(this));
 		};
 		this.redraw_node = function(obj, deep, callback, force_draw) {
 			obj = parent.redraw_node.call(this, obj, deep, callback, force_draw);
@@ -156,10 +156,10 @@
 		this.bind = function () {
 			parent.bind.call(this);
 			this.element
-				.on("click.jstree", ".jstree-questionmark", $.proxy(function (e) {
+				.on("click.jstree", ".jstree-questionmark", function (e) {
 						e.stopImmediatePropagation();
 						this.settings.questionmark.call(this, this.get_node(e.target));
-					}, this));
+					}.bind(this));
 		};
 		this.teardown = function () {
 			if(this.settings.questionmark) {
@@ -293,16 +293,16 @@
 				}
 				tmp.push(obj);
 			}
-			return this._append_json_data(id, tmp, $.proxy(function (status) {
+			return this._append_json_data(id, tmp, function (status) {
 				callback.call(this, status);
-			}, this));
+			}.bind(this));
 		};
 		this._load_node = function (obj, callback) {
 			var id = obj.id;
-			var nd = obj.id === "#" ? this.settings.core.data : this._data.datamodel[obj.id].getChildren($.proxy(function (nodes) {
+			var nd = obj.id === "#" ? this.settings.core.data : this._data.datamodel[obj.id].getChildren(function (nodes) {
 				this._datamodel(id, nodes, callback);
-			}, this));
-			if($.isArray(nd)) {
+			}.bind(this));
+			if($.vakata.is_array(nd)) {
 				this._datamodel(id, nd, callback);
 			}
 		};
@@ -356,7 +356,7 @@
 		};
 		this.close_node = function (obj, animation) {
 			var t1, t2, t, d;
-			if($.isArray(obj)) {
+			if($.vakata.is_array(obj)) {
 				obj = obj.slice();
 				for(t1 = 0, t2 = obj.length; t1 < t2; t1++) {
 					this.close_node(obj[t1], animation);
@@ -534,13 +534,13 @@
                                 if (property) {
                                         jsTreeDataSettings[propertyName] = function(node) {
                                                 if (this.get_node(node).parentsload_required) {
-                                                        if ($.isFunction(property)) {
+                                                        if ($.vakata.is_function(property)) {
                                                                 return property.call(this, node)
                                                         } else {// (typeof property === 'string')
                                                                 return property
                                                         }
                                                 } else {
-                                                        if ($.isFunction(coreProperty)) {
+                                                        if ($.vakata.is_function(coreProperty)) {
                                                                 return coreProperty.call(this, node)
                                                         } else { // (typeof coreProperty === 'string')
                                                                 return coreProperty
@@ -552,7 +552,7 @@
                                 }*/
                         }
 
-                        if($.isFunction(parentsloadSettings)) {
+                        if($.vakata.is_function(parentsloadSettings)) {
                                 this.settings.data = parentsloadSettings
                         } else if (typeof parentsloadSettings === 'object') {
                                 if (! (parentsloadSettings.url || parentsloadSettings.data)) {
@@ -568,7 +568,7 @@
                 }
 
                 this.load_node = function (obj, callback) {
-                        if($.isArray(obj)) {
+                        if($.vakata.is_array(obj)) {
                                 // FIXME: _load_nodes will not load nodes not presented in the tree
                                 this._load_nodes(obj.slice(), callback);
                                 return true;

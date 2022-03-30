@@ -18,7 +18,7 @@ class Email
     /**
      * phpmailer对象
      */
-    protected $mail = [];
+    protected $mail = null;
 
     /**
      * 错误内容
@@ -96,7 +96,7 @@ class Email
 
     /**
      * 设置收件人
-     * @param mixed  $email 收件人,多个收件人以,进行分隔
+     * @param mixed $email 收件人,多个收件人以,进行分隔
      * @return $this
      */
     public function to($email)
@@ -122,7 +122,7 @@ class Email
             $emailArr[key($emailArr)] = $name;
         }
         foreach ($emailArr as $address => $name) {
-            $this->mail->addCC($address, $name);
+            $this->mail->addCC($name, $address);
         }
         return $this;
     }
@@ -219,6 +219,7 @@ class Email
                 preg_match_all("/Expected: (\d+)\, Got: (\d+)( \| (.*))?\$/i", $e->getMessage(), $matches);
                 $code = isset($matches[2][3]) ? $matches[2][3] : 0;
                 $message = isset($matches[2][0]) ? $matches[4][0] : $e->getMessage();
+                $message = mb_convert_encoding($message, 'UTF-8', 'GBK,GB2312,BIG5');
                 $this->setError($message);
             } catch (\Exception $e) {
                 $this->setError($e->getMessage());

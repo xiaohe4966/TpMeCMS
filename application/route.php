@@ -27,27 +27,36 @@
 // |_   __ __ |  \/  | ___   / ___|  \/  / ___|     | AUTHOR: Xiaohe
 //   | || '_ \| |\/| |/ _ \ | |   | |\/| \___ \     | EMAIL: 496631085@qq.com
 //   | || |_) | |  | |  __/ | |___| |  | |___) |    | WECHAT: he4966
-//   |_|| .__/|_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2021/07/31
+//   |_|| .__/|_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2022/03/17
 //      |_|                                         | TpMeCMS
-
-// return [
-//     //别名配置,别名只能是映射到控制器且访问时必须加上请求的方法
-//     '__alias__'   => [
-//     ],
-//     //变量规则
-//     '__pattern__' => [
-//     ],
-
-// //        域名绑定到模块
-// //        '__domain__'  => [
-// //            'admin' => 'admin',
-// //            'api'   => 'api',
-// //        ],
-// ];
 use think\Route;
 
 use think\Db;
 use think\Config;
+
+$installLockFile = APP_PATH . 'admin' . DS . 'command' . DS . 'Install' . DS. "install.lock";
+
+if(!is_file($installLockFile)){
+    return [
+        //别名配置,别名只能是映射到控制器且访问时必须加上请求的方法
+        '__alias__'   => [
+        ],
+        //变量规则
+        '__pattern__' => [
+        ],
+    
+    //        域名绑定到模块
+    //        '__domain__'  => [
+    //            'admin' => 'admin',
+    //            'api'   => 'api',
+    //        ],
+    ];
+}
+
+
+
+
+
 
 
 //如果开启了自定义路由

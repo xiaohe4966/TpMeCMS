@@ -16,18 +16,6 @@ use think\Hook;
 class Upload
 {
 
-    /**
-     * 验证码有效时长
-     * @var int
-     */
-    protected static $expire = 120;
-
-    /**
-     * 最大允许检测的次数
-     * @var int
-     */
-    protected static $maxCheckNums = 10;
-
     protected $merging = false;
 
     protected $chunkDir = null;
@@ -37,7 +25,7 @@ class Upload
     protected $error = '';
 
     /**
-     * @var \think\File
+     * @var File
      */
     protected $file = null;
     protected $fileInfo = null;
@@ -51,16 +39,29 @@ class Upload
         }
     }
 
+    /**
+     * 设置分片目录
+     * @param $dir
+     */
     public function setChunkDir($dir)
     {
         $this->chunkDir = $dir;
     }
 
+    /**
+     * 获取文件
+     * @return File
+     */
     public function getFile()
     {
         return $this->file;
     }
 
+    /**
+     * 设置文件
+     * @param $file
+     * @throws UploadException
+     */
     public function setFile($file)
     {
         if (empty($file)) {
@@ -79,28 +80,48 @@ class Upload
         $this->checkExecutable();
     }
 
+    /**
+     * 检测是否为可执行脚本
+     * @return bool
+     * @throws UploadException
+     */
     protected function checkExecutable()
     {
         //禁止上传PHP和HTML文件
-        if (in_array($this->fileInfo['type'], ['text/x-php', 'text/html']) || in_array($this->fileInfo['suffix'], ['php', 'html', 'htm'])) {
+        if (in_array($this->fileInfo['type'], ['text/x-php', 'text/html']) || in_array($this->fileInfo['suffix'], ['php', 'html', 'htm', 'phar', 'phtml']) || preg_match("/^php(.*)/i", $this->fileInfo['suffix'])) {
             throw new UploadException(__('Uploaded file format is limited'));
         }
         return true;
     }
 
+    /**
+     * 检测文件类型
+     * @return bool
+     * @throws UploadException
+     */
     protected function checkMimetype()
     {
         $mimetypeArr = explode(',', strtolower($this->config['mimetype']));
         $typeArr = explode('/', $this->fileInfo['type']);
+        //Mimetype值不正确
+        if (stripos($this->fileInfo['type'], '/') === false) {
+            throw new UploadException(__('Uploaded file format is limited'));
+        }
         //验证文件后缀
         if ($this->config['mimetype'] === '*'
             || in_array($this->fileInfo['suffix'], $mimetypeArr) || in_array('.' . $this->fileInfo['suffix'], $mimetypeArr)
-            || in_array($this->fileInfo['type'], $mimetypeArr) || in_array($typeArr[0] . "/*", $mimetypeArr)) {
+            || in_array($typeArr[0] . "/*", $mimetypeArr) || (in_array($this->fileInfo['type'], $mimetypeArr) && stripos($this->fileInfo['type'], '/') !== false)) {
             return true;
         }
         throw new UploadException(__('Uploaded file format is limited'));
     }
 
+    /**
+     * 检测是否图片
+     * @param bool $force
+     * @return bool
+     * @throws UploadException
+     */
     protected function checkImage($force = false)
     {
         //验证是否为图片文件
@@ -117,6 +138,10 @@ class Upload
         }
     }
 
+    /**
+     * 检测文件大小
+     * @throws UploadException
+     */
     protected function checkSize()
     {
         preg_match('/([0-9\.]+)(\w+)/', $this->config['maxsize'], $matches);
@@ -131,11 +156,22 @@ class Upload
         }
     }
 
+    /**
+     * 获取后缀
+     * @return string
+     */
     public function getSuffix()
     {
         return $this->fileInfo['suffix'] ?: 'file';
     }
 
+    /**
+     * 获取存储的文件名
+     * @param string $savekey
+     * @param string $filename
+     * @param string $md5
+     * @return mixed|null
+     */
     public function getSavekey($savekey = null, $filename = null, $md5 = null)
     {
         if ($filename) {
@@ -145,6 +181,7 @@ class Upload
             $suffix = $this->fileInfo['suffix'];
         }
         $filename = $filename ? $filename : ($suffix ? substr($this->fileInfo['name'], 0, strripos($this->fileInfo['name'], '.')) : $this->fileInfo['name']);
+        $filename = xss_clean(strip_tags(htmlspecialchars($filename)));
         $md5 = $md5 ? $md5 : md5_file($this->fileInfo['tmp_name']);
         $replaceArr = [
             '{year}'     => date("Y"),
@@ -352,10 +389,14 @@ class Upload
             }
         }
         $this->file = $file;
+        $category = request()->post('category');
+        $category = array_key_exists($category, config('site.attachmentcategory') ?? []) ? $category : '';
+        $auth = Auth::instance();
         $params = array(
             'admin_id'    => (int)session('admin.id'),
-            'user_id'     => (int)cookie('uid'),
-            'filename'    => substr(htmlspecialchars(strip_tags($this->fileInfo['name'])), 0, 100),
+            'user_id'     => (int)$auth->id,
+            'filename'    => mb_substr(htmlspecialchars(strip_tags($this->fileInfo['name'])), 0, 100),
+            'category'    => $category,
             'filesize'    => $this->fileInfo['size'],
             'imagewidth'  => $this->fileInfo['imagewidth'],
             'imageheight' => $this->fileInfo['imageheight'],
@@ -376,11 +417,19 @@ class Upload
         return $attachment;
     }
 
+    /**
+     * 设置错误信息
+     * @param $msg
+     */
     public function setError($msg)
     {
         $this->error = $msg;
     }
 
+    /**
+     * 获取错误信息
+     * @return string
+     */
     public function getError()
     {
         return $this->error;

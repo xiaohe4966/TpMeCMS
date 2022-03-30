@@ -285,7 +285,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     $(Table.config.disabledbtn, toolbar).toggleClass('disabled', !options.selectedIds.length);
                 });
                 // 绑定TAB事件
-                $('.panel-heading [data-field] a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                $('.panel-heading [data-field] a[data-toggle="tab"]', table.closest(".panel-intro")).on('shown.bs.tab', function (e) {
                     var field = $(this).closest("[data-field]").data("field");
                     var value = $(this).data("value");
                     var object = $("[name='" + field + "']", table.closest(".bootstrap-table").find(".commonsearch-table"));
@@ -297,6 +297,14 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     table.trigger("uncheckbox");
                     table.bootstrapTable('refresh', {pageNumber: 1});
                     return false;
+                });
+                // 修复重置事件
+                $("form", table.closest(".bootstrap-table").find(".commonsearch-table")).on('reset', function () {
+                    setTimeout(function () {
+                        // $('.panel-heading [data-field] li.active a[data-toggle="tab"]').trigger('shown.bs.tab');
+                    }, 0);
+                    $('.panel-heading [data-field] li', table.closest(".panel-intro")).removeClass('active');
+                    $('.panel-heading [data-field] li:first', table.closest(".panel-intro")).addClass('active');
                 });
                 // 刷新按钮事件
                 toolbar.on('click', Table.config.refreshbtn, function () {
@@ -396,7 +404,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     var ids = Table.api.selectedids(table);
                     Layer.confirm(
                         __('Are you sure you want to delete the %s selected item?', ids.length),
-                        {icon: 3, title: __('Warning'), offset: 0, shadeClose: true},
+                        {icon: 3, title: __('Warning'), offset: 0, shadeClose: true, btn: [__('OK'), __('Cancel')]},
                         function (index) {
                             Table.api.multi("del", ids, table, that);
                             Layer.close(index);
@@ -485,7 +493,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     var that = this;
                     Layer.confirm(
                         __('Are you sure you want to delete this item?'),
-                        {icon: 3, title: __('Warning'), shadeClose: true},
+                        {icon: 3, title: __('Warning'), shadeClose: true, btn: [__('OK'), __('Cancel')]},
                         function (index) {
                             Table.api.multi("del", id, table, that);
                             Layer.close(index);
@@ -501,16 +509,13 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         var btnGroup = $(this);
                         var isPullRight = dropdownMenu.hasClass("pull-right") || dropdownMenu.hasClass("dropdown-menu-right");
                         var left, top, position;
-                        if (dropdownMenu.outerHeight() + btnGroup.outerHeight() > tableBody.outerHeight() - 41) {
+                        if (true || dropdownMenu.outerHeight() + btnGroup.outerHeight() > tableBody.outerHeight() - 41) {
                             position = 'fixed';
                             top = btnGroup.offset().top - $(window).scrollTop() + btnGroup.outerHeight();
-                            left = isPullRight ? btnGroup.offset().left + btnGroup.outerWidth() - dropdownMenu.outerWidth() : btnGroup.offset().left;
-                        } else {
-                            if (btnGroup.offset().top + btnGroup.outerHeight() + dropdownMenu.outerHeight() > tableBody.offset().top + tableBody.outerHeight() - 30) {
-                                position = 'absolute';
-                                left = isPullRight ? -(dropdownMenu.outerWidth() - btnGroup.outerWidth()) : 0;
-                                top = -(dropdownMenu.outerHeight() + 3);
+                            if ((top + dropdownMenu.outerHeight()) > $(window).height()) {
+                                top = btnGroup.offset().top - dropdownMenu.outerHeight() - 5;
                             }
+                            left = isPullRight ? btnGroup.offset().left + btnGroup.outerWidth() - dropdownMenu.outerWidth() : btnGroup.offset().left;
                         }
                         if (left || top) {
                             dropdownMenu.css({
@@ -588,7 +593,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         }
                         Layer.confirm(
                             __('Are you sure you want to delete this item?'),
-                            {icon: 3, title: __('Warning'), offset: [top, left], shadeClose: true},
+                            {icon: 3, title: __('Warning'), offset: [top, left], shadeClose: true, btn: [__('OK'), __('Cancel')]},
                             function (index) {
                                 var table = $(that).closest('table');
                                 var options = table.bootstrapTable('getOptions');
@@ -603,9 +608,12 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         var data = [];
                         value = value === null ? '' : value.toString();
                         var arr = value != '' ? value.split(",") : [];
+                        var url;
                         $.each(arr, function (index, value) {
+                            url = Fast.api.cdnurl(value);
                             data.push({
-                                src: Fast.api.cdnurl(value),
+                                src: url,
+                                thumb: url.match(/^(\/|data:image\\)/) ? url : url + Config.upload.thumbstyle
                             });
                         });
                         Layer.photos({
@@ -630,16 +638,45 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                     value = value == null || value.length === 0 ? '' : value.toString();
                     value = value ? value : '/assets/img/blank.gif';
                     var classname = typeof this.classname !== 'undefined' ? this.classname : 'img-sm img-center';
-                    return '<a href="javascript:"><img class="' + classname + '" src="' + Fast.api.cdnurl(value) + '" /></a>';
+                    var url = Fast.api.cdnurl(value, true);
+                    url = url.match(/^(\/|data:image\\)/) ? url : url + Config.upload.thumbstyle;
+                    return '<a href="javascript:"><img class="' + classname + '" src="' + url + '" /></a>';
                 },
                 images: function (value, row, index) {
                     value = value == null || value.length === 0 ? '' : value.toString();
                     var classname = typeof this.classname !== 'undefined' ? this.classname : 'img-sm img-center';
                     var arr = value != '' ? value.split(',') : [];
                     var html = [];
+                    var url;
                     $.each(arr, function (i, value) {
                         value = value ? value : '/assets/img/blank.gif';
-                        html.push('<a href="javascript:"><img class="' + classname + '" src="' + Fast.api.cdnurl(value) + '" /></a>');
+                        url = Fast.api.cdnurl(value, true);
+                        url = url.match(/^(\/|data:image\\)/) ? url : url + Config.upload.thumbstyle;
+                        html.push('<a href="javascript:"><img class="' + classname + '" src="' + url + '" /></a>');
+                    });
+                    return html.join(' ');
+                },
+                file: function (value, row, index) {
+                    value = value == null || value.length === 0 ? '' : value.toString();
+                    value = Fast.api.cdnurl(value, true);
+                    var classname = typeof this.classname !== 'undefined' ? this.classname : 'img-sm img-center';
+                    var suffix = /[\.]?([a-zA-Z0-9]+)$/.exec(value);
+                    suffix = suffix ? suffix[1] : 'file';
+                    var url = Fast.api.fixurl("ajax/icon?suffix=" + suffix);
+                    return '<a href="' + value + '" target="_blank"><img src="' + url + '" class="' + classname + '"></a>';
+                },
+                files: function (value, row, index) {
+                    value = value == null || value.length === 0 ? '' : value.toString();
+                    var classname = typeof this.classname !== 'undefined' ? this.classname : 'img-sm img-center';
+                    var arr = value != '' ? value.split(',') : [];
+                    var html = [];
+                    var suffix, url;
+                    $.each(arr, function (i, value) {
+                        value = Fast.api.cdnurl(value, true);
+                        suffix = /[\.]?([a-zA-Z0-9]+)$/.exec(value);
+                        suffix = suffix ? suffix[1] : 'file';
+                        url = Fast.api.fixurl("ajax/icon?suffix=" + suffix);
+                        html.push('<a href="' + value + '" target="_blank"><img src="' + url + '" class="' + classname + '"></a>');
                     });
                     return html.join(' ');
                 },
@@ -734,6 +771,16 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         value = row[this.customField];
                         field = this.customField;
                     }
+                    if (typeof that.searchList === 'object' && typeof that.custom === 'undefined') {
+                        var i = 0;
+                        var searchValues = Object.values(colorArr);
+                        $.each(that.searchList, function (key, val) {
+                            if (typeof colorArr[key] == 'undefined') {
+                                colorArr[key] = searchValues[i];
+                                i = typeof searchValues[i + 1] === 'undefined' ? 0 : i + 1;
+                            }
+                        });
+                    }
 
                     //渲染Flag
                     var html = [];
@@ -797,6 +844,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
             },
             buttonlink: function (column, buttons, value, row, index, type) {
                 var table = column.table;
+                column.clickToSelect = false;
                 type = typeof type === 'undefined' ? 'buttons' : type;
                 var options = table ? table.bootstrapTable('getOptions') : {};
                 var html = [];
@@ -827,7 +875,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                         dropdown = j.dropdown ? j.dropdown : '';
                         url = j.url ? j.url : '';
                         url = typeof url === 'function' ? url.call(table, row, j) : (url ? Fast.api.fixurl(Table.api.replaceurl(url, row, table)) : 'javascript:;');
-                        classname = j.classname ? j.classname : 'btn-primary btn-' + name + 'one';
+                        classname = j.classname ? j.classname : (dropdown ? 'btn-' + name + 'one' : 'btn-primary btn-' + name + 'one');
                         icon = j.icon ? j.icon : '';
                         text = typeof j.text === 'function' ? j.text.call(table, row, j) : j.text ? j.text : '';
                         title = typeof j.title === 'function' ? j.title.call(table, row, j) : j.title ? j.title : text;

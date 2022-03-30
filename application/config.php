@@ -133,8 +133,8 @@ return [
         'taglib_begin' => '{',
         // 标签库标签结束标记
         'taglib_end'   => '}',
-        'tpl_cache'    => false,
-         //自定义标签库
+        'tpl_cache'    => true,
+        //自定义标签库
         'taglib_pre_load'    => 'app\common\library\Tp',
     ],
     // 视图输出字符串内容替换,留空则会自动进行计算
@@ -254,7 +254,7 @@ return [
         // 驱动方式
         'type'     => 'Mysql',
         // 缓存前缀
-        'key'      => '1fVT6uNjF0rbSlR9ezvDxZdLEwWI2KQh',
+        'key'      => 'FJ6vSy9zeXiLd3VUDcTbEOh2mfosuKAp',
         // 加密方式
         'hashalgo' => 'ripemd160',
         // 缓存有效期 0表示永久缓存
@@ -280,7 +280,9 @@ return [
         'multiplenav'           => false,
         //是否开启多选项卡(仅在开启多级菜单时起作用)
         'multipletab'           => true,
-        //后台皮肤,为空时表示使用skin-black-green
+        //是否默认展示子菜单
+        'show_submenu'          => false,
+        //后台皮肤,为空时表示使用skin-black-blue
         'adminskin'             => '',
         //后台是否启用面包屑
         'breadcrumb'            => false,
@@ -295,7 +297,7 @@ return [
         //允许跨域的域名,多个以,分隔
         'cors_request_domain'   => 'localhost,127.0.0.1',
         //版本号
-        'version'               => '1.2.0.20210401_beta',
+        'version'               => '1.3.3.20220121',
         //API接口地址
         'api_url'               => 'https://api.fastadmin.net',
     ],

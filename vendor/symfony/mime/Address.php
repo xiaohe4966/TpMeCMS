@@ -106,7 +106,7 @@ final class Address
     }
 
     /**
-     * @param (Address|string)[] $addresses
+     * @param array<Address|string> $addresses
      *
      * @return Address[]
      */
@@ -122,7 +122,7 @@ final class Address
 
     public static function fromString(string $string): self
     {
-        if (false === strpos($string, '<')) {
+        if (!str_contains($string, '<')) {
             return new self($string, '');
         }
 

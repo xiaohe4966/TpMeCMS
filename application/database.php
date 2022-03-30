@@ -18,11 +18,11 @@ return [
     // 服务器地址
     'hostname'        => Env::get('database.hostname', '127.0.0.1'),
     // 数据库名
-    'database'        => Env::get('database.database', 'tpmecms_he4966'),
+    'database'        => Env::get('database.database', 'fastadmin'),
     // 用户名
-    'username'        => Env::get('database.username', 'tpmecms_he4966'),
+    'username'        => Env::get('database.username', 'root'),
     // 密码
-    'password'        => Env::get('database.password', 'tpmecms_he4966'),
+    'password'        => Env::get('database.password', ''),
     // 端口
     'hostport'        => Env::get('database.hostport', ''),
     // 连接dsn

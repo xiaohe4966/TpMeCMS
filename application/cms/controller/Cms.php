@@ -234,11 +234,25 @@ class Cms extends Frontend
             $page = $params['page'];
         }
 
+        //同一个表可以多个分类
+        if($cate['parent_id']>0){
+            //如果这个表里面有这个字段(兼容其他表判断)
+            $is_cate_id = Db::query("Describe ".$cate['table_name']." cate_id");
+            if($is_cate_id){
+                $where['cate_id'] = $cate['id'];
+            }
+
+            //如果这个表里面有这个字段(兼容其他表判断)
+            $is_deletetime = Db::query("Describe ".$cate['table_name']." deletetime");
+            if($is_deletetime){
+                $where['deletetime'] = NULL;//如果删除，但没有被真是删除（在回收站），就不显示
+            }
+            
+        }
       
         $limit = $cate['pagesize'];//分页数量
         $list = Db::table($cate['table_name'])
                 ->where($where)
-                ->where('deletetime',NULL)//如果删除，但没有被真是删除（在回收站），就不显示
                 ->order($field.' '.$sort)//排序
                 ->page($page,$limit)
                 ->limit($limit)

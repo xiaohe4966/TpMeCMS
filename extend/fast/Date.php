@@ -124,25 +124,29 @@ class Date
      */
     public static function human($remote, $local = null)
     {
-        $timediff = (is_null($local) || $local ? time() : $local) - $remote;
-        $chunks = array(
-            array(60 * 60 * 24 * 365, 'year'),
-            array(60 * 60 * 24 * 30, 'month'),
-            array(60 * 60 * 24 * 7, 'week'),
-            array(60 * 60 * 24, 'day'),
-            array(60 * 60, 'hour'),
-            array(60, 'minute'),
-            array(1, 'second')
-        );
+        $time_diff = (is_null($local) || $local ? time() : $local) - $remote;
+        $tense = $time_diff < 0 ? 'after' : 'ago';
+        $time_diff = abs($time_diff);
+        $chunks = [
+            [60 * 60 * 24 * 365, 'year'],
+            [60 * 60 * 24 * 30, 'month'],
+            [60 * 60 * 24 * 7, 'week'],
+            [60 * 60 * 24, 'day'],
+            [60 * 60, 'hour'],
+            [60, 'minute'],
+            [1, 'second']
+        ];
+        $name = 'second';
+        $count = 0;
 
         for ($i = 0, $j = count($chunks); $i < $j; $i++) {
             $seconds = $chunks[$i][0];
             $name = $chunks[$i][1];
-            if (($count = floor($timediff / $seconds)) != 0) {
+            if (($count = floor($time_diff / $seconds)) != 0) {
                 break;
             }
         }
-        return __("%d {$name}%s ago", $count, ($count > 1 ? 's' : ''));
+        return __("%d $name%s $tense", $count, ($count > 1 ? 's' : ''));
     }
 
     /**
@@ -187,13 +191,13 @@ class Date
                 break;
             case 'month':
                 $_timestamp = mktime(0, 0, 0, $month + $offset, 1, $year);
-                $time = $position ? $_timestamp : mktime(23, 59, 59, $month + $offset, cal_days_in_month(CAL_GREGORIAN, date("m", $_timestamp), date("Y", $_timestamp)), $year);
+                $time = $position ? $_timestamp : mktime(23, 59, 59, $month + $offset, self::days_in_month(date("m", $_timestamp), date("Y", $_timestamp)), $year);
                 break;
             case 'quarter':
                 $_month = date("m", mktime(0, 0, 0, (ceil(date('n', mktime(0, 0, 0, $month, $day, $year)) / 3) + $offset) * 3, $day, $year));
                 $time = $position ?
                     mktime(0, 0, 0, 1 + ((ceil(date('n', $baseTime) / 3) + $offset) - 1) * 3, 1, $year) :
-                    mktime(23, 59, 59, (ceil(date('n', $baseTime) / 3) + $offset) * 3, cal_days_in_month(CAL_GREGORIAN, (ceil(date('n', $baseTime) / 3) + $offset) * 3, $year), $year);
+                    mktime(23, 59, 59, (ceil(date('n', $baseTime) / 3) + $offset) * 3, self::days_in_month((ceil(date('n', $baseTime) / 3) + $offset) * 3, $year), $year);
                 break;
             case 'year':
                 $time = $position ? mktime(0, 0, 0, 1, 1, $year + $offset) : mktime(23, 59, 59, 12, 31, $year + $offset);
@@ -203,5 +207,20 @@ class Date
                 break;
         }
         return $time;
+    }
+
+    /**
+     * 获取指定年月拥有的天数
+     * @param int $month
+     * @param int $year
+     * @return false|int|string
+     */
+    public static function days_in_month($month, $year)
+    {
+        if (function_exists("cal_days_in_month")) {
+            return cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        } else {
+            return date('t', mktime(0, 0, 0, $month, 1, $year));
+        }
     }
 }

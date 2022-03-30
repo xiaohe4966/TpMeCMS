@@ -54,7 +54,7 @@ class Category extends Backend
 
             //构造父类select列表选项数据
             $list = [];
-            // halt($this->categorylist);
+
             foreach ($this->categorylist as $k => $v) {
                 if ($search) {
                     if ($v['type'] == $type && stripos($v['name'], $search) !== false || stripos($v['nickname'], $search) !== false) {

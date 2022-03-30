@@ -73,7 +73,47 @@ class Wechatofficial extends Tpmecms
 
         $app->server->push(function ($message) {
             switch ($message['MsgType']) {
-                case 'event':
+                case 'event':                    
+                    //关注公众号事件 明文示例 {"ToUserName":"gh_3c8ce7c6bff0","FromUserName":"oS3Dn52old15oY69sD0ldnhcWqoQ","CreateTime":"1638167541","MsgType":"event","Event":"subscribe","EventKey":null}
+                    //兼容模式 和安全模式自行解密   密匙在微信公众号->基本配置（EncodingAESKey）
+                    if($message['Event']=='subscribe'){ //关注公众号事件
+                        try {
+                            $data['subscribe_time'] = $message['CreateTime'];
+                            $data['status'] = '2';//当前状态:1=未关注,2:已关注,3=已取消
+                            //关注公众号
+                            $wechat_user = Db::name('wechat_user')->where('openid',$message['FromUserName'])->find();
+                            if($wechat_user){
+                                Db::name('wechat_user')->where('openid',$message['FromUserName'])->update($data);
+                            }else{
+                                $data['type_status'] = '1';//类型:1=微信公众号,2=微信小程序
+                                $data['openid'] = $message['FromUserName'];
+                                $data['createtime'] = $message['CreateTime'];
+                                Db::name('wechat_user')->insert($data);
+                            }
+                        } catch (\Throwable $th) {
+                            
+                        }
+
+
+                    }elseif($message['Event']=='unsubscribe'){  //取消订阅事件
+                        //明文模式：{\"ToUserName\":\"gh_3c8ce7c6bff0\",\"FromUserName\":\"oS3Dn52old15oY69sD0ldnhcWqoQ\",\"CreateTime\":\"1638167529\",\"MsgType\":\"event\",\"Event\":\"unsubscribe\",\"EventKey\":null}
+                        try {
+                            $data['unsubscribe_time'] = $message['CreateTime'];
+                            $data['status'] = '3';//当前状态:1=未关注,2:已关注,3=已取消
+                            //关注公众号
+                            $wechat_user = Db::name('wechat_user')->where('openid',$message['FromUserName'])->find();
+                            if($wechat_user){
+                                Db::name('wechat_user')->where('openid',$message['FromUserName'])->update($data);
+                            }else{  //有可能之前关注了后面才取消
+                                $data['type_status'] = '1';//类型:1=微信公众号,2=微信小程序
+                                $data['openid'] = $message['FromUserName'];
+                                // $data['createtime'] = $message['CreateTime'];
+                                Db::name('wechat_user')->insert($data);
+                            }
+                        } catch (\Throwable $th) {
+                            
+                        }
+                    }
                     return 'TpMsCms收到事件消息'.json_encode($message);
                     break;
                 case 'text':

@@ -145,7 +145,7 @@ class Backend extends Controller
                 Hook::listen('admin_nologin', $this);
                 $url = Session::get('referer');
                 $url = $url ? $url : $this->request->url();
-                if ($url == '/') {
+                if (in_array($this->request->pathinfo(), ['/', 'index/index'])) {
                     $this->redirect('index/login', [], 302, ['referer' => $url]);
                     exit;
                 }
@@ -362,7 +362,9 @@ class Backend extends Controller
                 case 'BETWEEN':
                 case 'NOT BETWEEN':
                     $arr = array_slice(explode(',', $v), 0, 2);
-                    if (stripos($v, ',') === false || !array_filter($arr)) {
+                    if (stripos($v, ',') === false || !array_filter($arr, function($v){
+                        return $v != '' && $v !== false && $v !== null;
+                    })) {
                         continue 2;
                     }
                     //当出现一边为空时改变操作符

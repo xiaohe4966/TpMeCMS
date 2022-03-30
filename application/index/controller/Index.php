@@ -13,7 +13,6 @@ class Index extends Frontend
 
     public function index()
     {
-        //跳转cms首页
         $this->redirect('/cms/index/index');
         return $this->view->fetch();
     }

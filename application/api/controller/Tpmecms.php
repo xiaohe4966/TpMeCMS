@@ -151,10 +151,13 @@ class Tpmecms extends Tpmecmscom
          $config = [
              'app_id' => Config('site.wx_app_id'),//,
              'secret' => Config('site.wx_secret'),//,
-         
+            //  'token'   => Config('site.wx_secret'),//微信公众号->基本设置->服务器配置->令牌(Token)
              // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
              'response_type' => 'array',
-         
+              //  'log' => [
+                //     'level' => 'debug',
+                //     'file'  => 'easywechat.log',
+                // ],
              //...
          ];
          

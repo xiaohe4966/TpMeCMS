@@ -39,7 +39,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                         },
                         {
                             field: 'id',
-                            title: '<a href="javascript:;" class="btn btn-success btn-xs btn-toggle"><i class="fa fa-chevron-up"></i></a>',
+                            title: '<a href="javascript:;" class="btn btn-success btn-xs btn-toggle" style="border-top:none;"><i class="fa fa-chevron-up"></i></a>',
                             operate: false,
                             formatter: Controller.api.formatter.subnode
                         },
@@ -180,6 +180,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                 Form.api.bindevent($("form[role=form]"), function (data) {
                     Fast.api.refreshmenu();
                 });
+                $(document).on('change keyup', "#icon", function () {
+                    $(this).prev().find("i").prop("class", $(this).val());
+                });
                 $(document).on('click', ".btn-search-icon", function () {
                     if (iconlist.length == 0) {
                         $.get(Config.site.cdnurl + "/assets/libs/font-awesome/less/variables.less", function (ret) {
@@ -195,7 +198,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'template'], function
                     }
                 });
                 $(document).on('click', '#chooseicon ul li', function () {
-                    $("input[name='row[icon]']").val('fa fa-' + $(this).data("font"));
+                    $("input[name='row[icon]']").val('fa fa-' + $(this).data("font")).trigger("change");
                     Layer.closeAll();
                 });
                 $(document).on('keyup', 'input.js-icon-search', function () {
