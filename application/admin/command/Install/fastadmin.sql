@@ -318,7 +318,7 @@ CREATE TABLE `fa_news` (
   `publishtime` int(10) DEFAULT NULL COMMENT '发布时间',
   `deletetime` int(10) DEFAULT NULL COMMENT '删除时间',
   `memo` varchar(100) DEFAULT '' COMMENT '备注',
-  `content` text COMMENT '内容',
+  `content` longtext COMMENT '内容',
   `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态:1=正常,2=隐藏',
   PRIMARY KEY (`id`),
   KEY `status` (`status`),
