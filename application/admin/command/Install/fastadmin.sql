@@ -469,16 +469,16 @@ CREATE TABLE `fa_config` (
 -- Records of fa_config
 -- ----------------------------
 BEGIN;
-INSERT INTO `fa_config` VALUES (1, 'name', 'basic', 'Site name', '请填写站点名称', 'string', '', '我的网站', '', 'required', '', '');
-INSERT INTO `fa_config` VALUES (2, 'beian', 'basic', 'Beian', '粤ICP备15000000号-1', 'string', '', '', '', '', '', '');
+INSERT INTO `fa_config` VALUES (1, 'name', 'basic', 'Site name', '请填写站点名称', 'string', '', 'TpMeCMS', '', 'required', '', NULL);
+INSERT INTO `fa_config` VALUES (2, 'beian', 'basic', 'Beian', '蜀ICP备2020032960号-1', 'string', '', '', '', '', '', NULL);
 INSERT INTO `fa_config` VALUES (3, 'cdnurl', 'basic', 'Cdn url', '如果全站静态资源使用第三方云储存请配置该值', 'string', '', '', '', '', '', '');
-INSERT INTO `fa_config` VALUES (4, 'version', 'basic', 'Version', '如果静态资源有变动请重新配置该值', 'string', '', '1.0.1', '', 'required', '', '');
-INSERT INTO `fa_config` VALUES (5, 'timezone', 'basic', 'Timezone', '', 'string', '', 'Asia/Shanghai', '', 'required', '', '');
-INSERT INTO `fa_config` VALUES (6, 'forbiddenip', 'basic', 'Forbidden ip', '一行一条记录', 'text', '', '', '', '', '', '');
-INSERT INTO `fa_config` VALUES (7, 'languages', 'basic', 'Languages', '', 'array', '', '{\"backend\":\"zh-cn\",\"frontend\":\"zh-cn\"}', '', 'required', '', '');
-INSERT INTO `fa_config` VALUES (8, 'fixedpage', 'basic', 'Fixed page', '请尽量输入左侧菜单栏存在的链接', 'string', '', 'dashboard', '', 'required', '', '');
-INSERT INTO `fa_config` VALUES (9, 'categorytype', 'dictionary', 'Category type', '', 'array', '', '{\"default\":\"Default\",\"page\":\"Page\",\"article\":\"Article\",\"test\":\"Test\"}', '', '', '', '');
-INSERT INTO `fa_config` VALUES (10, 'configgroup', 'dictionary', 'Config group', '', 'array', '', '{\"basic\":\"Basic\",\"email\":\"Email\",\"dictionary\":\"Dictionary\",\"user\":\"User\",\"example\":\"Example\"}', '', '', '', '');
+INSERT INTO `fa_config` VALUES (4, 'version', 'basic', 'Version', '如果静态资源有变动请重新配置该值', 'string', '', '1.0.3', '', 'required', '', NULL);
+INSERT INTO `fa_config` VALUES (5, 'timezone', 'basic', 'Timezone', '', 'string', '', 'Asia/Shanghai', '', 'required', '', NULL);
+INSERT INTO `fa_config` VALUES (6, 'forbiddenip', 'basic', 'Forbidden ip', '一行一条记录', 'text', '', '', '', '', '', NULL);
+INSERT INTO `fa_config` VALUES (7, 'languages', 'basic', 'Languages', '', 'array', '', '{\"backend\":\"zh-cn\",\"frontend\":\"zh-cn\"}', '', 'required', '', NULL);
+INSERT INTO `fa_config` VALUES (8, 'fixedpage', 'basic', 'Fixed page', '请尽量输入左侧菜单栏存在的链接', 'string', '', 'dashboard', '', 'required', '', NULL);
+INSERT INTO `fa_config` VALUES (9, 'categorytype', 'dictionary', 'Category type', '', 'array', '', '{\"default\":\"默认\",\"page\":\"单页\",\"article\":\"文章\",\"test\":\"Test\"}', '', '', '', NULL);
+INSERT INTO `fa_config` VALUES (10, 'configgroup', 'dictionary', 'Config group', '', 'array', '', '{\"basic\":\"基础配置\",\"email\":\"邮件配置\",\"dictionary\":\"字典配置\",\"user\":\"会员配置\",\"example\":\"示例分组\",\"tpmecms\":\"TpMeCMS\",\"weixin\":\"微信设置\",\"alipay\":\"支付宝设置\"}', '', '', '', NULL);
 INSERT INTO `fa_config` VALUES (11, 'mail_type', 'email', 'Mail type', '选择邮件发送方式', 'select', '', '1', '[\"请选择\",\"SMTP\"]', '', '', '');
 INSERT INTO `fa_config` VALUES (12, 'mail_smtp_host', 'email', 'Mail smtp host', '错误的配置发送邮件会导致服务器超时', 'string', '', 'smtp.qq.com', '', '', '', '');
 INSERT INTO `fa_config` VALUES (13, 'mail_smtp_port', 'email', 'Mail smtp port', '(不加密默认25,SSL默认465,TLS默认587)', 'string', '', '465', '', '', '', '');
@@ -486,7 +486,26 @@ INSERT INTO `fa_config` VALUES (14, 'mail_smtp_user', 'email', 'Mail smtp user',
 INSERT INTO `fa_config` VALUES (15, 'mail_smtp_pass', 'email', 'Mail smtp password', '（填写您的密码或授权码）', 'string', '', 'password', '', '', '', '');
 INSERT INTO `fa_config` VALUES (16, 'mail_verify_type', 'email', 'Mail vertify type', '（SMTP验证方式[推荐SSL]）', 'select', '', '2', '[\"无\",\"TLS\",\"SSL\"]', '', '', '');
 INSERT INTO `fa_config` VALUES (17, 'mail_from', 'email', 'Mail from', '', 'string', '', '10000@qq.com', '', '', '', '');
-INSERT INTO `fa_config` VALUES (18, 'attachmentcategory', 'dictionary', 'Attachment category', '', 'array', '', '{\"category1\":\"Category1\",\"category2\":\"Category2\",\"custom\":\"Custom\"}', '', '', '', '');
+INSERT INTO `fa_config` VALUES (18, 'attachmentcategory', 'dictionary', 'Attachment category', '', 'array', '', '{\"category1\":\"分类一\",\"category2\":\"分类二\",\"custom\":\"自定义\"}', '', '', '', NULL);
+INSERT INTO `fa_config` VALUES (19, 'app_id', 'weixin', '小程序Appid', '小程序Appid', 'string', '', 'wx4966310850000000', '', '', '', NULL);
+INSERT INTO `fa_config` VALUES (20, 'secret', 'weixin', '小程序密匙', '小程序密匙secret', 'string', '', 'xxxxxxxxxxxxxxxxxxxxxxxxx', '', '', '', NULL);
+INSERT INTO `fa_config` VALUES (21, 'mch_id', 'weixin', '微信商户号', '微信商户号', 'string', '', '1618630644', '', '', '', NULL);
+INSERT INTO `fa_config` VALUES (22, 'key', 'weixin', 'API 密钥', '微信商户号密匙', 'string', '', 'wuximeisujingkejikeluboshixihu88', '', '', '', NULL);
+INSERT INTO `fa_config` VALUES (23, 'wx_app_id', 'weixin', '公众号Appid', '微信公众号Appid', 'string', '', 'wxa637a21e57e20ada', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (24, 'wx_secret', 'weixin', '公众号密匙', '微信公众号的密匙', 'string', '', '7ba39f3b593d55db3d158ec50e40e39e', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (25, 'tel', 'tpmecms', '联系手机', '联系手机号码', 'string', '', '19999999999', '', 'mobile', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (26, 'index_url', 'tpmecms', '网站首页地址', '网站首页地址', 'string', '', '/cms/index/index', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (27, 'wxqr_img', 'weixin', '公众号二维码', '关注微信公众号二维码', 'image', '', '/uploads/20210622/a572d67db33e94f6dc8dd2e908c03ff2.jpg', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (28, 'addr', 'tpmecms', '联系地址', '联系地址', 'string', '', '无锡市梁溪区锋尚文创中心', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (29, 'addr2', 'tpmecms', '联系地址2', '联系地址2', 'string', '', '2302', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (30, 'email', 'tpmecms', '邮箱', '邮箱地址', 'string', '', '496631085@qq.com', '', 'email', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (31, 'banquan', 'tpmecms', '版权', '底部版权信息', 'string', '', 'TpMeCms © 2021 版权所有', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (32, 'technical_support', 'tpmecms', '技术支持', '技术支持', 'string', '', '技术支持：TpMeCMS', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (33, 'route_switch', 'tpmecms', '自定义路由开关', '开启后使用的(栏目管理>自定义名称)', 'switch', '', '1', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (34, 'wechat_cert_path', 'weixin', '微信证书', 'xxxx.pem', 'file', '', '/uploads/apiclient_cert.pem', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (35, 'wechat_key_path', 'weixin', '微信证书key', '证书KEY.pem', 'file', '', '/uploads/apiclient_key.pem', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (50, 'ali_app_id', 'alipay', '支付宝Appid', '支付宝Appid', 'string', '', '2021003125655437', '', '', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
+INSERT INTO `fa_config` VALUES (51, 'ali_apiDomain', 'alipay', '支付宝接口网关', '一般默认', 'string', '', 'https://openapi.alipay.com/gateway.do', '', 'url', '', '{\"table\":\"\",\"conditions\":\"\",\"key\":\"\",\"value\":\"\"}');
 COMMIT;
 
 -- ----------------------------
