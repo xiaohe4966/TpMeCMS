@@ -27,7 +27,7 @@
 // |_   __ __ |  \/  | ___   / ___|  \/  / ___|     | AUTHOR: Xiaohe
 //   | || '_ \| |\/| |/ _ \ | |   | |\/| \___ \     | EMAIL: 496631085@qq.com
 //   | || |_) | |  | |  __/ | |___| |  | |___) |    | WECHAT: he4966
-//   |_|| .__/|_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2021/06/25
+//   |_|| .__/|_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2022/04/20
 //      |_|                                         | TpMeCMS
 
 namespace app\cms\controller;
@@ -79,8 +79,6 @@ class Com extends Cms
         
         $in_data['logintime'] = time();//登陆时间
         if($user){
-            $in_data['sex'] = $data['sex'];
-            $in_data['city'] = $data['city'];
             $in_data['avatar'] = $data['headimgurl'];
             $in_data['nickname'] = $data['nickname'];
             if($sharer && empty($user['pid'])){
@@ -101,8 +99,6 @@ class Com extends Cms
 
             }
             $in_data['wx_openid'] = $data['openid'];
-            $in_data['sex'] = $data['sex'];
-            $in_data['city'] = $data['city'];
             $in_data['avatar'] = $data['headimgurl'];
             $in_data['nickname'] = $data['nickname'];
             $in_data['status'] = 'normal';
