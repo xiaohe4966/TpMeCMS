@@ -13,14 +13,14 @@ TpMeCMS是一款基于FastAdmin框架（version:V1.3.3.20220121）开发的，Fa
 
 ## 下载方法
     下载默认直接:
-    `git clone https://gitee.com/xiaohe4966/TpMeCMS.git`
+    `git clone git@gitee.com:xiaohe4966/tp-me-cms.git`
 
     下载某个分支:
     `git clone -b 分支名 网址.git`
     可以用git安装：  
-    `git clone -b v1.3.3.2 https://gitee.com/xiaohe4966/tp-me-cms.git`
+    `git clone -b v1.3.3.2 git@gitee.com:xiaohe4966/tp-me-cms.git`
     或：
-    `git clone -b v1.3.3.2 https://github.com/xiaohe4966/TpMeCMS.git`
+    `git clone -b v1.3.3.2 git@github.com:xiaohe4966/tp-me-cms.git`
     
     或直接下载zip完整包
     https://he4966.cn/uploads/tpmecms/tpmecms.zip   解压到安装目录
