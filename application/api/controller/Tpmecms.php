@@ -684,4 +684,59 @@ class Tpmecms extends Tpmecmscom
 
 
 
+//  _____      __  __         ____ __  __ ____  
+// |_   __ __ |  \/  | ___   / ___|  \/  / ___|     | AUTHOR: Xiaohe
+//   | || '_ \| |\/| |/ _ \ | |   | |\/| \___ \     | EMAIL: 496631085@qq.com
+//   | || |_) | |  | |  __/ | |___| |  | |___) |    | WECHAT: he4966
+//   |_|| .__/|_|  |_|\___|  \____|_|  |_|____/     | DATETIME: 2022/03/31
+//      |_|                                         | TpMeCms 支付配置Strat
+
+
+    /**
+     * @ApiInternal
+     * 获取支付宝支付配置
+     * @param integer $pay_role 1默认货主,2=司机
+     *
+     * @return void
+     */   
+    public function TpMe_get_alipay_params(){
+
+        try {
+            $params = new \Yurun\PaySDK\AlipayApp\Params\PublicParams;
+        } catch (\Throwable $th) {
+            halt('请查看composer show 是否安装了yurunsoft/pay-sdk');
+        }
+        
+        $config = Config::get('site');
+
+        
+        $params->appID = $config['ali_app_id'];
+        $params->apiDomain = $config['ali_apiDomain'];
+        $params->format = 'JSON';
+        $params->sign_type = 'RSA2';
+
+        // $params->isUseAES = true;
+        // // 使用公钥证书模式
+        $params->usePublicKeyCert = true;
+        // 支付宝公钥证书文件路径
+        $params->alipayCertPath = './cert/alipayCertPublicKey_RSA2.crt';
+        // 支付宝根证书文件路径
+        $params->alipayRootCertPath = './cert/alipayRootCert.crt';
+        // 支付宝应用公钥证书文件路径
+        $params->merchantCertPath = './cert/appCertPublicKey_2021003105661387.crt';
+
+        $params->aesKey   = 'UlZ8TAMN688HF/MTWDqE2g==';
+    
+        // 下面用支付宝开发工具校验是否对应
+        //应用公钥2048
+        $params->appPublicKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgu1NlQM8kIhHzYsNPl46SiKjUtz2E6YrGTdeNE4YijeX7zOHtYxNxzAb5aR4kSuUdJL7mwpa9t+gY/qthWFlrQnQ5jFtTwNVP5rGt4gJ2cs3DHrr1TksiHZKvXGtPTQcVGPyaDXnRNgxO6OdGoJzKbFJmctpIc/9fNIiLKeCfT5s8jPrxwAYQUTzWRMqCQdPgaF1OnB2KWQ2ZHtI3YYx2j8qJK4rMTTYmPS7Xcn0Eln6iE8S5/vLpe6h8LYGKMRiNiBzb27wC2hyFRD4BBqk6n9iGSarBHk9E0Pqv0lIAaGKkqnaJNkTWksvhQBLUzCk4Z3ZqfHKsGD0ftHwbrMHpQIDAQAB';
+        //应用私钥2048.txt   支付宝开发工具生成
+        $params->appPrivateKey = 'MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCidx5KvTI/ZSHzMTnCCXAqVhn/KVkMeE9juZ5oPoAzznq/IKiOCNFENiHVwor0INnEjE119+5R9RCs3Ud2E/RLG/3apaGvR401SufH3fT6WOfETvd5L4O27Akapy58Db/UHJP9VGA8on90//YtEhveS0qci3b/W0aP/BavWGNuW1Ja7nmrEomlMPYFGOxbt+Z96xNkpudRC92Hqy9SHIe9gh3bAfON6J+8J6mkXQ6S5+bwk7PpPojLL+LQmZtIxwX125jzfjPYbAmmf0Y1iRfkeQ9D45L62EiJNxCIJCuDm/xu+m7IInnlLbQy9cyJZyZLn2SY4IxHFEWzwcx07lrjAgMBAAECggEAKGZosPs1SJB0jc4a58aDDvQUSOBWVYSBcXISEygfp0JcQbT0VUWaDFVNuqNC/IxCut6M0J4TtGu1dtcb0yAJKrhOOxXfDABF/A+hbZEjPzHmiGl+nrMTFOTDKs6R/6VHo45rup5FxC5Ada7E39ZV+cRNTHpd4AgpltqAJaBcMW+69rPESGnOCfk+sEdfVOfp4qntJtzaVX2F/nGKk/7A1RsydcZMo06Pu2fA0C7o5Hvlc/q1Sc33uWB0c+wLbXjSR99MhP9tQ3k2rB4lglGgIy/IGrMXYe7xQC9yOhvEpTUMCfL/JmKxZCmCEuzwouso/esNMYfLbQdCI60PcQ2E2QKBgQD1L61czyIGGkyIBlrQAhCmrgtQbEMbh12KK8GqpaZvG2F0ObI06x3jiOgyCzH985rf1GZSbWkBiOV9OwFsy8Ist+g6nB1HQWqt4KcsGaV1Rs2RvhLVWdxgN/w4GtACQzelGt5xYRD9Bj5mtE0FJLgOonyQ4n8TOqx3bBuwBeZXBQKBgQCpoXbiAzmRCiBAqwgScxTVnTOhuAhKnLXDiIgIEO1XbAsF8uuk6WXq/v5+ZquG8pMSlEP7IqdGRJDF7w/Pth13spOWkqGvlHgAeGeOnGXJt5MHGuqkgr1+vTLT4O1ScHrxERzGElLqtNJ1Vxbu4u+HnQIq3ogZu4slpq5/XQ++xwKBgQCz6epSggO7aqzh25fjrsA9LtVKjEap+qie7QDNkYQRX4whVvz3a9eg0SNhJWnnqUvqFteGgJZe8+9B93xSMyom2kRkTY4GbXA0avcAm0kYR34tBcaYG7pkOHCxUqt0HZLFanPzyoBGysAbaQ5jSdBtnLm/LxSELbfEYeXnQk0FaQKBgQCpWecLa7bMQ7TBez8a1EPnpANJICc+/kdFSIiurN+XWOmEbequgMncm+lOHoh+uKz2bomULxubPpbe1XYOpD21I9bPC+NaHLrVlV+l9CR3B8xE2q2JwnEXGCKnf7bPiDZld/UnFmIrqo020tS1eGE1Hh5s2DA+qIsZ8tfhlfJDPwKBgAicnhA49D+7/Sgle9yo1xB/q8L6mWd40FxCH1DQfA1lJ4Ix4TDdILRXfbBbJLqBHEf4HADOON0gvc2WMQt7EEYnCv4R13/8cAYSN0HaeS6pQFJfwT74DdQa8jw1JuBGhxMaIRn2v10LVKjtIUfoUBpk3u06KkPpgpnLp+rPsr1V';
+      
+        return $params;      
+    }
+
+
+
+
 }
