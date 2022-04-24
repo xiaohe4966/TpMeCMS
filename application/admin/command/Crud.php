@@ -421,8 +421,8 @@ class Crud extends Command
         $dbname = Config::get($db . '.database');
         $prefix = Config::get($db . '.prefix');
 
-        //系统表无法生成，防止后台错乱
-        if (in_array(str_replace($prefix, "", $table), $this->systemTables)) {
+        //系统表无法生成相同的模型和控制器，防止后台错乱
+        if (in_array($model, $this->systemTables) || in_array($controller, $this->systemTables)) {
             throw new Exception('system table can\'t be crud');
         }
 
