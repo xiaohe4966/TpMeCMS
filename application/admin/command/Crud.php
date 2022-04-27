@@ -1644,7 +1644,7 @@ EOD;
     {
         $langField = mb_ucfirst($field);
         return <<<EOD
-    <div class="form-group">
+    <div class="form-group tpmecms-{$field}">
         <label class="control-label col-xs-12 col-sm-2">{:__('{$langField}')}:</label>
         <div class="col-xs-12 col-sm-8">
             {$content}
