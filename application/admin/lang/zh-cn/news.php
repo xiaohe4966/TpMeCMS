@@ -14,6 +14,7 @@ return [
     'Publishtime' => '发布时间',
     'Deletetime'  => '删除时间',
     'Memo'        => '备注',
+    'Cate_id'	   => '栏目名',
     'Content'     => '内容',
     'Status'      => '状态',
     'Status 1'    => '正常',
