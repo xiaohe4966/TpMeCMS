@@ -19,6 +19,7 @@
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script src="__CMS__/js/jquery.js"></script> 
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="__CMS__/js/respond.js"></script><![endif]-->
 </head>
@@ -114,7 +115,24 @@
                 <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
                 	<aside class="sidebar default-sidebar">
 
-                      
+                        <div class="form-group" >
+                            <label for="exampleInputFile">搜索内容</label>
+                            <!-- <input type="text" id="exampleInputFile" placeholder="请输入要搜索的内容" style="border: 1px;padding: 10px;" > -->
+                            <input type="text" class="form-control" id="search" placeholder="请输入要搜索的内容" value="{$search}">
+                            
+                            <button type="submit" class="btn btn-primary tpmecms_search" style="margin-top: 10px;">点击搜索</button>
+                            <script>
+                                $('.tpmecms_search').click(function () {
+                                    var search = $('#search').val();
+                                    if(search!='' && search!=null){
+                                        url = '/news?search='+search;
+                                        window.location.href = url;
+                                    }else{
+                                        alert('请输入要搜索的内容');
+                                    }
+                                });
+                            </script>
+                        </div>
                         
                         <!-- Popular Posts -->
                         <div class="sidebar-widget popular-posts">
@@ -129,6 +147,9 @@
                             {/tp:list}
 
                         </div>
+                        
+                            
+
                         
                         <!-- Popular Tags -->
                         <div class="sidebar-widget popular-tags">
@@ -179,7 +200,7 @@
 </div>
 <!-- /.End Of Color Palate -->
 
-<script src="__CMS__/js/jquery.js"></script> 
+
 <!--Revolution Slider-->
 <script src="__CMS__/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
 <script src="__CMS__/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
@@ -193,9 +214,9 @@
 <script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 <script src="__CMS__/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
 <script src="__CMS__/js/main-slider-script.js"></script>
-
-<script src="__CMS__/js/bootstrap.min.js"></script>
 <script src="__CMS__/js/jquery.fancybox.js"></script>
+<script src="__CMS__/js/bootstrap.min.js"></script>
+
 
 <script src="__CMS__/js/owl.js"></script>
 <script src="__CMS__/js/wow.js"></script>

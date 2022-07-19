@@ -229,6 +229,12 @@ class Cms extends Frontend
         if(isset($params['tag'])){
             $where['tags'] = ['like',"%".$params['tag']."%"];
         }
+
+        if(isset($params['search']) && !empty($params['search'])){
+            $where['title|content|seotitle|keywords|description|memo'] = ['like',"%".$params['search']."%"];
+        }
+
+
         //例如前段直接传page参数
         if(isset($params['page'])){
             $page = $params['page'];
@@ -294,6 +300,8 @@ class Cms extends Frontend
         // halt($page_data);
 
         $this->view->assign('page' , $page_data);
+        $this->view->assign('search' , $this->request->param('search',''));
+        
         //*******************翻页自定义区域结束
 
 
