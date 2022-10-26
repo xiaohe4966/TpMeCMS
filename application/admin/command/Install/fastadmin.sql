@@ -304,6 +304,7 @@ COMMIT;
 DROP TABLE IF EXISTS `fa_news`;
 CREATE TABLE `fa_news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cate_id` tinyint(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目',
   `title` varchar(255) DEFAULT '' COMMENT '文章标题',
   `image` varchar(255) DEFAULT '' COMMENT '缩略图',
   `images` varchar(1500) DEFAULT '' COMMENT '组图',
@@ -324,15 +325,15 @@ CREATE TABLE `fa_news` (
   KEY `status` (`status`),
   KEY `channel` (`weigh`,`id`),
   KEY `weigh` (`weigh`,`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COMMENT='信息动态';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='信息动态';
 
 -- ----------------------------
 -- Records of fa_news
 -- ----------------------------
 BEGIN;
-INSERT INTO `fa_news` VALUES (1, 'TpMeCMS22', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '', '', 'TpMeCMS', '小米智能,xiao', 0, 2, NULL, 1624004225, NULL, NULL, '', 'TpMeCMSTpMeCMSTpMeCMS', '1');
-INSERT INTO `fa_news` VALUES (111, '联系我们', '/cms/images/services-2.jpg', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '标签,分割', 111, 1, 1624004284, 1624004284, 1624004236, NULL, '', '<p>/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-<b>1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg</b><br></p>', '1');
-INSERT INTO `fa_news` VALUES (112, '员工列表', '/cms/images/news-2.jpg', '/cms/images/services-1.jpg', 'International standard laboratory', '公共服务平台关键字', '/cms/images/services-1.jpg', '', 112, 4, 1624263266, 1624263266, 1624263230, NULL, '', '<p>zheshi miaos&nbsp;</p>', '1');
+INSERT INTO `fa_news` VALUES (1, 52,'TpMeCMS22', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '', '', 'TpMeCMS', '小米智能,xiao', 0, 2, NULL, 1624004225, NULL, NULL, '', 'TpMeCMSTpMeCMSTpMeCMS', '1');
+INSERT INTO `fa_news` VALUES (2, 59,'联系我们', '/cms/images/services-2.jpg', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '/cms/images/services-1.jpg', '标签,分割', 111, 1, 1624004284, 1624004284, 1624004236, NULL, '', '<p>/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-<b>1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg/cms/images/services-1.jpg</b><br></p>', '1');
+INSERT INTO `fa_news` VALUES (3, 59,'员工列表', '/cms/images/news-2.jpg', '/cms/images/services-1.jpg', 'International standard laboratory', '公共服务平台关键字', '/cms/images/services-1.jpg', '', 112, 4, 1624263266, 1624263266, 1624263230, NULL, '', '<p>zheshi miaos&nbsp;</p>', '1');
 COMMIT;
 
 -- ----------------------------

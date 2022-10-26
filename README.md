@@ -207,6 +207,7 @@ https://he4966.cn/index/product/10.html?cate=9
     2021-11-19 加入微信公众号授权登陆 `http://tpmecms.he4966.cn/cms/user/wx_login`
     2022-03-29 更fastadmin版本为V1.3.3.20220121
     2022-04-24 修改一键生成命令是系统表里面的表 可以生成(不能为系统表里面的名 比如user表 一键CRUD里模型和控制器可以改成user2)
+    2022-07-19 加入news搜索
 
 
 ## 代码说明
