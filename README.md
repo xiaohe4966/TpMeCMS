@@ -9,18 +9,19 @@ TpMeCMS是一款基于FastAdmin框架（version:V1.3.5.20221214）开发的，Fa
     集成微信小程序和微信公众号功能，后台集成栏目管理等，接口可以直接拷贝app\cms\controller\Cms
 
 ## 环境要求
-    PHP>=7.1 本项目是7.1运行环境
+    V1.3.5.x PHP >= 7.2 且 <= 7.4 (推荐PHP7.4版本) 本项目是7.4运行环境
+    V1.3.5以下 PHP >= 7.1 且 <= 7.4 (推荐PHP7.4版本)
 
 ## 下载方法
     下载默认直接:
-    `git clone git@gitee.com:xiaohe4966/tp-me-cms.git`
+    `git clone https://gitee.com/xiaohe4966/tp-me-cms.git`
 
     下载某个分支:
     `git clone -b 分支名 网址.git`
     可以用git安装：  
-    `git clone -b v1.3.5.2 git@gitee.com:xiaohe4966/tp-me-cms.git`
+    `git clone -b v1.3.5.2 https://gitee.com/xiaohe4966/tp-me-cms.git`
     或：
-    `git clone -b v1.3.5.2 git@github.com:xiaohe4966/tp-me-cms.git`
+    `git clone -b v1.3.5.2 https://github.com/xiaohe4966/tp-me-cms.git`
     
     或直接下载zip完整包
     https://he4966.cn/uploads/tpmecms/tpmecms.zip   解压到安装目录
