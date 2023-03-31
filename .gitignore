@@ -1,11 +1,11 @@
 /nbproject/
-/thinkphp/
+#/thinkphp/
+#/vendor/
 /runtime/*
 /addons/*
-/application/admin/command/Install/*.lock
-/public/assets/libs/
-/public/assets/addons/*
-/public/uploads/*
+#/public/assets/libs/
+#/public/assets/addons/*
+#/public/uploads/*
 .idea
 composer.lock
 *.log
@@ -15,3 +15,4 @@ composer.lock
 .svn
 .vscode
 node_modules
+.user.ini
