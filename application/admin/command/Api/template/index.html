@@ -181,7 +181,12 @@
                     <div class="panel-heading" id="heading-{$api.id}">
                         <h4 class="panel-title">
                             <span class="label {$api.methodLabel}">{$api.method|strtoupper}</span>
-                            <a data-toggle="collapse" data-parent="#accordion{$api.id}" href="#collapseOne{$api.id}"> {$api.title} <span class="text-muted">{$api.route}</span></a>
+                            <a data-toggle="collapse" data-parent="#accordion{$api.id}" href="#collapseOne{$api.id}">
+                                {$api.title} <span class="text-muted">{$api.route}</span>
+                                {if $api.needLogin}
+                                <span class="label label-success pull-right noneedlogin">登</span>
+                                {/if}
+                            </a>
                         </h4>
                     </div>
                     <div id="collapseOne{$api.id}" class="panel-collapse collapse">
