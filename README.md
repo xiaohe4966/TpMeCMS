@@ -31,8 +31,42 @@ TpMeCMS是一款基于FastAdmin框架（version:V1.3.5.20221214）开发的，Fa
      
     修改网站运行目录为public
     修改伪静态！！！修改伪静态！！修改伪静态！
+    正常Nginx伪静态
+    ```
+    location ~* (runtime|application)/{
+        return 403;
+    }
+    location / {
+        if (!-e $request_filename){
+            rewrite  ^(.*)$  /index.php?s=$1  last;   break;
+        }
+    }
+    ```
 
-    （可以跳过该步骤）如果 php 版本非7.1可运行命令  composer update   （更新安装各种包）注意php -v 的版本最好大于等于7.1
+
+    非一般人用Nginx伪静态 意思隐藏h.php 和index.php 看不懂下么面的可以百度学习
+    ```
+        location ~* (runtime|application)/{
+            return 403;
+        }
+        location / {
+            if (!-e $request_filename){
+                    rewrite  ^(.*)$  /h.php$1  last; 
+            break;
+            }
+        }
+            
+        location  ^~ /api/{
+            #代理的是一个请求的网址 自行修改代理地址
+            proxy_pass http://yousite.cn/home.php/api/;
+        }
+        location  ^~ /index.php/{
+            #把index.php 修改成home.php隐藏首页文件 自行修改代理地址
+            proxy_pass http://yousite.cn/home.php/;
+        }
+    ```
+
+    （可以跳过该步骤）如果 php 版本非7.2可运行命令  composer update   （更新安装各种包）注意php -v 的版本最好大于等于7.2
             
     
     文件在application/database.php里面修改   //或者在根目录.env里面更改(没有此文件请忽略)
