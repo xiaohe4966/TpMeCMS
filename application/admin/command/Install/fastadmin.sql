@@ -471,6 +471,9 @@ CREATE TABLE `fa_user` (
   `token` varchar(50) DEFAULT '' COMMENT 'Token',
   `status` varchar(30) DEFAULT '' COMMENT '状态',
   `verification` varchar(255) DEFAULT '' COMMENT '验证',
+  `wx_openid` varchar(32) DEFAULT '' COMMENT '微信openid',
+  `openid` varchar(32) DEFAULT '' COMMENT '小程序openid',
+  `unionid` varchar(32) DEFAULT '' COMMENT '微信unionid',
   PRIMARY KEY (`id`),
   KEY `username` (`username`),
   KEY `email` (`email`),
@@ -481,7 +484,7 @@ CREATE TABLE `fa_user` (
 -- Records of fa_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `fa_user` VALUES (1, 1, 'admin', 'admin', '', '', 'admin@163.com', '13888888888', '', 0, 0, '2017-04-08', '', 0, 0, 1, 1, 1491635035, 1491635035, '127.0.0.1', 0, '127.0.0.1', 1491635035, 0, 1491635035, '', 'normal','');
+INSERT INTO `fa_user` VALUES (1, 1, 'admin', 'admin', '', '', 'admin@163.com', '13888888888', '', 0, 0, '2017-04-08', '', 0, 0, 1, 1, 1491635035, 1491635035, '127.0.0.1', 0, '127.0.0.1', 1491635035, 0, 1491635035, '', 'normal','','','','');
 COMMIT;
 
 -- ----------------------------
