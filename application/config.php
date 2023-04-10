@@ -301,4 +301,8 @@ return [
         //API接口地址
         'api_url'               => 'https://api.fastadmin.net',
     ],
+    'dev' => [
+        'ip' => Env::get('dev.ip', ''), //开发者需要查看详细报错的IP 多个用,分隔
+        'domain' => Env::get('dev.domain', ''), //开发者需要查看详细报错的域名 多个用,分隔(一个网站可以添加多个域名)
+    ],
 ];
