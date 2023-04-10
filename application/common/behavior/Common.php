@@ -54,8 +54,10 @@ class Common
         if (Config::get('app_debug')) {
             // 如果是调试模式将version置为当前的时间戳可避免缓存
             Config::set('site.version', time());
-            // 如果是开发模式那么将异常模板修改成官方的
-            Config::set('exception_tmpl', THINK_PATH . 'tpl' . DS . 'think_exception.tpl');
+            // 如果是开发模式那么将异常模板修改成官方的(加入自定义ip或域名才会执行详细报错)
+            if (!empty(Config::get('dev.domain')) || !empty(Config::get('dev.ip')))
+                if (in_array(request()->header('host'), explode(',', Config::get('dev.domain'))) || in_array(request()->ip(), explode(',', Config::get('dev.ip'))))
+                    Config::set('exception_tmpl', THINK_PATH . 'tpl' . DS . 'think_exception.tpl');
         }
         // 如果是trace模式且Ajax的情况下关闭trace
         if (Config::get('app_trace') && $request->isAjax()) {
