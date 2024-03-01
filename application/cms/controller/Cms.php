@@ -413,12 +413,19 @@ class Cms extends Frontend
      */
     public function get_page_url($cate_id,$page)
     {
+        $params = $this->request->param();
+        unset($params['page']);
+        unset($params['id']);
+        $url_params = '';
+        if(sizeof($params)>0){
+            $url_params = '?'.http_build_query($params);
+        }//翻页等带上参数
+
         if(Config::get('site.route_switch')){
             $cate = Db::name('cate')->find($cate_id);
-            // return $this->request->domain().'/cms/index/cate/id/'.$cate_id.'/page/'.$page;
-            return $this->request->domain().'/'.$cate['diyname'].'/page/'.$page;
+            return $this->request->domain().'/'.$cate['diyname'].'/page/'.$page.$url_params;
         }else{
-            return $this->request->domain().'/cms/index/cate/id/'.$cate_id.'/page/'.$page;
+            return $this->request->domain().'/cms/index/cate/id/'.$cate_id.'/page/'.$page.$url_params;
         }
         
     }
