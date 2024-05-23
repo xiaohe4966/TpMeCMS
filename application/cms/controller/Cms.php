@@ -224,6 +224,12 @@ class Cms extends Frontend
     {
         $where['status'] = '1';//需要状态为1才显示
 
+        //获取栏目下的子栏目id
+        $__CATE_LIST__ = \think\Db::name('cate')->field('name,id,parent_id')->select();
+        $tree = \fast\Tree::instance()->init($__CATE_LIST__,'parent_id');
+        $__CATE_IDS__ = $tree->getChildrenIds($cate['id'],true);//获取id栏目下的子栏目id,第二个参数是否包含自己
+        $where['cate_id'] = [ 'in', $__CATE_IDS__];
+
         //可以直接get或post提交各种参数自行添加条件
         $params = $this->request->param();
         if(isset($params['tag'])){
@@ -232,6 +238,7 @@ class Cms extends Frontend
 
         if(isset($params['search']) && !empty($params['search'])){
             $where['title|content|seotitle|keywords|description|memo'] = ['like',"%".$params['search']."%"];
+            unset($where['cate_id']);//如果搜索当前栏目下的列表就注释该代码
         }
 
 
@@ -240,21 +247,18 @@ class Cms extends Frontend
             $page = $params['page'];
         }
 
-        //同一个表可以多个分类
-        if($cate['parent_id']>0){
-            //如果这个表里面有这个字段(兼容其他表判断)
-            $is_cate_id = Db::query("Describe ".$cate['table_name']." cate_id");
-            if($is_cate_id){
-                $where['cate_id'] = $cate['id'];
-            }
-
-            //如果这个表里面有这个字段(兼容其他表判断)
-            $is_deletetime = Db::query("Describe ".$cate['table_name']." deletetime");
-            if($is_deletetime){
-                $where['deletetime'] = NULL;//如果删除，但没有被真是删除（在回收站），就不显示
-            }
-            
+        //如果这个表里面有这个字段(兼容其他表判断)
+        $is_cate_id = Db::query("Describe ".$cate['table_name']." cate_id");
+        if(!$is_cate_id){
+            unset($where['cate_id']);
         }
+
+        //如果这个表里面有这个字段(兼容其他表判断)
+        $is_deletetime = Db::query("Describe ".$cate['table_name']." deletetime");
+        if($is_deletetime){
+            $where['deletetime'] = NULL;//如果删除，但没有被真是删除（在回收站），就不显示
+        }
+            
       
         $limit = $cate['pagesize'];//分页数量
         $list = Db::table($cate['table_name'])
