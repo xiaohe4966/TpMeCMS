@@ -304,7 +304,7 @@ COMMIT;
 DROP TABLE IF EXISTS `fa_news`;
 CREATE TABLE `fa_news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cate_id` tinyint(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目',
+  `cate_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目',
   `title` varchar(255) DEFAULT '' COMMENT '文章标题',
   `image` varchar(255) DEFAULT '' COMMENT '缩略图',
   `images` varchar(1500) DEFAULT '' COMMENT '组图',
@@ -342,7 +342,7 @@ COMMIT;
 DROP TABLE IF EXISTS `fa_page`;
 CREATE TABLE `fa_page` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
-  `cate_id` tinyint(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目',
+  `cate_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '栏目',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
   `content` text NOT NULL COMMENT '内容',
   `description` varchar(255) DEFAULT NULL COMMENT '简介',
